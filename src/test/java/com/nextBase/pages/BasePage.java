@@ -1,7 +1,7 @@
-package com.nextBase.Pages;
+package com.nextBase.pages;
 
-import com.nextBase.Utilities.BrowserUtils;
-import com.nextBase.Utilities.Driver;
+import com.nextBase.utilities.BrowserUtils;
+import com.nextBase.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -15,6 +15,7 @@ public abstract class BasePage {
     }
     @FindBy(xpath = "//a[@title='Drive']")
     public WebElement Drive;
+
 
 
 
