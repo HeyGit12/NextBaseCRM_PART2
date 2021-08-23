@@ -13,14 +13,17 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 public class Driver {
+    private Driver() {
 
-    private Driver() {}
+    }
 
     private static WebDriver driver;
 
     public static WebDriver get() {
+        // Test
         if (driver == null) {
-            String browser = com.nextBase.utilities.ConfigurationReader.get("browser");
+            // this line will tell which browser should open based on the value from properties file
+            String browser = ConfigurationReader.get("browser");
             switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
@@ -59,8 +62,6 @@ public class Driver {
                     driver = new SafariDriver();
                     break;
             }
-
-
 
         }
 
