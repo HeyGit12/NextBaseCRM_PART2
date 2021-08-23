@@ -1,6 +1,6 @@
-package com.nextBase.StepDefinitions;
+package com.nextBase.stepDefinitions;
 
-import com.nextBase.Utilities.Driver;
+import com.nextBase.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;

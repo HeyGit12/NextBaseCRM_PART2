@@ -1,4 +1,4 @@
-package com.nextBase.Utilities;
+package com.nextBase.utilities;
 
 import org.junit.Assert;
 import org.openqa.selenium.*;

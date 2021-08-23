@@ -1,4 +1,4 @@
-package com.nextBase.Runners;
+package com.nextBase.runners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         plugin =  {"json:target/cucumber.json",
                 "html:target/default-html-reports"},
         features = "src/test/resources/features",
-        glue = "com/nextBase/StepDefinitions",
+        glue = "com/nextBase/stepDefinitions",
         dryRun = true
         //tags =
 

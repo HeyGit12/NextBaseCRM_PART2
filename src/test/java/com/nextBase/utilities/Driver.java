@@ -1,4 +1,4 @@
-package com.nextBase.Utilities;
+package com.nextBase.utilities;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -20,7 +20,7 @@ public class Driver {
 
     public static WebDriver get() {
         if (driver == null) {
-            String browser = com.nextBase.Utilities.ConfigurationReader.get("browser");
+            String browser = com.nextBase.utilities.ConfigurationReader.get("browser");
             switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();

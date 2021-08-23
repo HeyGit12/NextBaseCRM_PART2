@@ -1,4 +1,4 @@
-package com.nextBase.Utilities;
+package com.nextBase.utilities;
 
 import java.io.FileInputStream;
 import java.util.Properties;
