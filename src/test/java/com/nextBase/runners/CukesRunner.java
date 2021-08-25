@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
                 "html:target/default-html-reports"},
         features = "src/test/resources/features",
         glue = "com/nextBase/stepDefinitions",
-        dryRun = true
-        //tags =FailedTestRunner
+        dryRun = false,
+        tags = "@wip"
 
 
 )
