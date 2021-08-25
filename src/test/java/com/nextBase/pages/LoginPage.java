@@ -1,5 +1,6 @@
 package com.nextBase.pages;
 
+import com.nextBase.utilities.ConfigurationReader;
 import com.nextBase.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,12 +28,10 @@ public class LoginPage {
     public WebElement errorMessage;
 
 
-    public void login(String userNameStr, String passwordStr) {
-        userName.sendKeys(userNameStr);
-        password.sendKeys(passwordStr);
+    public void login() {
+        userName.sendKeys(ConfigurationReader.get("hr_username"));
+        password.sendKeys(ConfigurationReader.get("password"));
         submit.click();
-
-
 
     }
 
