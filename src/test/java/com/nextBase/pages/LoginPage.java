@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Locale;
+
 public class LoginPage {
 
 
@@ -28,8 +30,9 @@ public class LoginPage {
     public WebElement errorMessage;
 
 
-    public void login() {
-        userName.sendKeys(ConfigurationReader.get("hr_username"));
+    public void login(String userType) {
+        String type=userType.toLowerCase();
+        userName.sendKeys(ConfigurationReader.get(type+"_username"));
         password.sendKeys(ConfigurationReader.get("password"));
         submit.click();
 
