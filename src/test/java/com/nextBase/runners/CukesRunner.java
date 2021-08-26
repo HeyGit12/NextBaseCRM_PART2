@@ -11,10 +11,9 @@ import org.junit.runner.RunWith;
                 "html:target/default-html-reports"},
         features = "src/test/resources/features",
         glue = "com/nextBase/stepDefinitions",
+        tags ="@wip",
         dryRun = true
-        //tags =FailedTestRunner
-
-
+        
 )
 
 public class CukesRunner {
