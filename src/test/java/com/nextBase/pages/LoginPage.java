@@ -10,7 +10,6 @@ import java.util.Locale;
 
 public class LoginPage {
 
-
     public LoginPage(){
     PageFactory.initElements(Driver.get(), this);
 }
@@ -18,25 +17,16 @@ public class LoginPage {
     @FindBy(xpath="//input[@name='USER_LOGIN']")
     public WebElement userName;
 
-
-
     @FindBy(xpath="//input[@name='USER_PASSWORD']")
     public WebElement password;
 
     @FindBy(xpath = "//input[@class='login-btn']")
     public WebElement submit;
 
-    @FindBy(xpath = "//div[@class='errortext']")
-    public WebElement errorMessage;
-
-
     public void login(String userType) {
         String type=userType.toLowerCase();
         userName.sendKeys(ConfigurationReader.get(type+"_username"));
         password.sendKeys(ConfigurationReader.get("password"));
         submit.click();
-
     }
-
-
 }
