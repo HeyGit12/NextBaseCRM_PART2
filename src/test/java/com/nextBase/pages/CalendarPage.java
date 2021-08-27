@@ -64,6 +64,15 @@ public class CalendarPage extends BasePage {
     @FindBy(xpath = "(//span[@class='calendar-timeline-stream-content-event-color'])[1]")
     public WebElement eventColor;
 
+    @FindBy(name = "private_event")
+    public WebElement privateEvent;
+
+    @FindBy(xpath = "(//div[@class='calendar-timeline-stream-content-event-members'])[1]")
+    public WebElement eventDetails;
+
+    @FindBy(xpath = "(//div[@class='calendar-slider-detail-option-value'])[3]")
+    public WebElement specialNotes;
+
     public void eventDescription(String description) {
         Driver.get().switchTo().frame(2);
         Driver.get().manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);

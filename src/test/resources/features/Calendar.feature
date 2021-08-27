@@ -18,9 +18,15 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
 
     Then user should be able to add event by clicking SAVE button and display event on calendar
 
-  @wip
   Scenario:HR User edits event color as "Navy Blue"
     Given  User logins with "HR" credentials
     And user clicks "Calendar" menu
     When user clicks event and selects edit
     Then user should be able to change event color as "Navy blue"
+
+  Scenario:HR User edits privacy as "Private event"
+    Given  User logins with "HR" credentials
+    And user clicks "Calendar" menu
+    When user clicks event and selects edit
+    Then user should be able to change privacy as "Private Event"
+
