@@ -6,17 +6,15 @@ import com.nextBase.pages.LoginPage;
 import com.nextBase.utilities.BrowserUtils;
 import com.nextBase.utilities.ConfigurationReader;
 import com.nextBase.utilities.Driver;
-import io.cucumber.java.ca.Cal;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
-
+import java.awt.*;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
+
+
 
 public class CalendarStepDefs {
     String user = null;
@@ -136,5 +134,15 @@ public class CalendarStepDefs {
     public void user_should_be_able_to_change_his_her_event_s_name_as(String string) {
         calendarPage.eventName.sendKeys(string);
         calendarPage.save.click();
+    }
+    @Then("user should be able to change repeat section as {string}")
+    public void user_should_be_able_to_change_repeat_section_as(String string) throws AWTException {
+        BrowserUtils.waitForPageToLoad(10);
+        Select select = new Select(calendarPage.repeat);
+        select.selectByVisibleText(string);
+        calendarPage.save.click();
+        String actualTitle = Driver.get().getTitle();
+        String expectedTitle = ConfigurationReader.get(user + "_username") + ": Calendar";
+        Assert.assertEquals(expectedTitle, actualTitle);
     }
 }

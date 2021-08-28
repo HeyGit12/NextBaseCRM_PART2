@@ -32,6 +32,9 @@ public class CalendarPage extends BasePage {
     @FindBy(xpath = "//select[@name='tz_from']")
     public WebElement timeZoneFrom;
 
+    @FindBy(xpath = "//select[@name='EVENT_RRULE[FREQ]']")
+    public WebElement repeat;
+
     @FindBy(xpath = "//input[@name='lo_cation']")
     public WebElement location;
 
