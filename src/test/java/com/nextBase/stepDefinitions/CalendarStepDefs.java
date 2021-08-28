@@ -58,11 +58,11 @@ public class CalendarStepDefs {
         calendarPage.location.sendKeys(data.get("Location"));
 
         calendarPage.addAttendees(data.get("Attendees"));
-        BrowserUtils.waitForVisibility(calendarPage.more,5);
-        calendarPage.more.click();
-        BrowserUtils.waitForVisibility(calendarPage.event,5);
-        calendarPage.eventDescription(data.get("Description"));
 
+        BrowserUtils.waitForPageToLoad(10);
+        calendarPage.more.click();
+        calendarPage.eventDescription(data.get("Description"));
+        BrowserUtils.waitForPageToLoad(10);
         calendarPage.selectColor(data.get("Event color"));
 
         Select selectAvailability = new Select(calendarPage.availability);
@@ -84,34 +84,37 @@ public class CalendarStepDefs {
     @When("user clicks event and selects edit")
     public void user_clicks_event_and_selects_edit() {
 
-        calendarPage.event.click();
+        calendarPage.eventDetails.click();
+        calendarPage.eventDetails.click();
         calendarPage.editEvent.click();
     }
 
     @Then("user should be able to change event color as {string}")
     public void user_should_be_able_to_change_event_color_as(String color) {
+        BrowserUtils.waitForPageToLoad(10);
         calendarPage.more.click();
-        Driver.get().manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         calendarPage.selectColor(color);
         calendarPage.save.click();
-//        BrowserUtils.waitForPageToLoad(5);
-//        String style = calendarPage.eventColor.getAttribute("style");
+        BrowserUtils.waitForPageToLoad(5);
+        String style = calendarPage.eventColor.getAttribute("style");
 //        System.out.println(style);
-//        String colorCode = "rgb(0, 0, 128)";
-//        Assert.assertTrue(style.contains(colorCode));
+        String colorCode = "rgb(0, 0, 128)";
+        Assert.assertTrue(style.contains(colorCode));
     }
 
     @Then("user should be able to change privacy as {string}")
     public void user_should_be_able_to_change_privacy_as(String privacy) {
+        BrowserUtils.waitForPageToLoad(10);
         calendarPage.more.click();
-        BrowserUtils.waitForVisibility(calendarPage.privateEvent,5);
-        if(!calendarPage.privateEvent.isSelected()){calendarPage.privateEvent.click();}
+        if (!calendarPage.privateEvent.isSelected()) {
+            calendarPage.privateEvent.click();
+        }
         calendarPage.save.click();
         calendarPage.eventDetails.click();
         calendarPage.eventDetails.click();
         String text = calendarPage.specialNotes.getText();
         System.out.println(text);
-        Assert.assertEquals(privacy,text);
+        Assert.assertEquals(privacy, text);
     }
 
     @When("user clicks Schedule")
@@ -121,10 +124,17 @@ public class CalendarStepDefs {
 
     @Then("user should be able to change his-her availability as {string}")
     public void user_should_be_able_to_change_his_her_availability_as(String availability) {
+        BrowserUtils.waitForPageToLoad(10);
         calendarPage.more.click();
-        BrowserUtils.waitForVisibility(calendarPage.privateEvent,5);
+        BrowserUtils.waitForVisibility(calendarPage.privateEvent, 5);
         Select selectAvailability = new Select(calendarPage.availability);
         selectAvailability.selectByVisibleText(availability);
+        calendarPage.save.click();
+    }
+
+    @Then("user should be able to change his-her event's name as {string}")
+    public void user_should_be_able_to_change_his_her_event_s_name_as(String string) {
+        calendarPage.eventName.sendKeys(string);
         calendarPage.save.click();
     }
 }

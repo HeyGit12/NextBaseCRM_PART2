@@ -1,7 +1,7 @@
-
 Feature: As a user, I should be able to navigate "Calendar" page so that user can filter and search, display, add and track
   the tasks or events on "Calendar" page.
 
+  @pass
   Scenario:HR User adds new event with given details
     Given  User logins with "HR" credentials
     And user clicks "Calendar" menu
@@ -19,12 +19,13 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
 
     Then user should be able to add event by clicking SAVE button and display event on calendar
 
+  @wip
   Scenario:HR User edits event color as "Navy Blue"
     Given  User logins with "HR" credentials
     And user clicks "Calendar" menu
     When user clicks event and selects edit
     Then user should be able to change event color as "Navy blue"
-  @wip
+
   Scenario:HR User edits privacy as "Private event"
     Given  User logins with "HR" credentials
     And user clicks "Calendar" menu
@@ -35,10 +36,15 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
     Given User logins with "Marketing" credentials
     And user clicks "Calendar" menu
     When user clicks Schedule
-  @wip
-    Scenario: HR User edits his/her availability as "Unsure"
-      Given  User logins with "HR" credentials
-      And user clicks "Calendar" menu
-      When user clicks event and selects edit
-      Then user should be able to change his-her availability as "Unsure"
 
+  Scenario: HR User edits his-her availability as "Unsure"
+    Given  User logins with "HR" credentials
+    And user clicks "Calendar" menu
+    When user clicks event and selects edit
+    Then user should be able to change his-her availability as "Unsure"
+
+  Scenario: HR User edits his-her event's name as "MY_TEST_EVENT"
+    Given  User logins with "HR" credentials
+    And user clicks "Calendar" menu
+    When user clicks event and selects edit
+    Then user should be able to change his-her event's name as "MY_TEST_EVENT"

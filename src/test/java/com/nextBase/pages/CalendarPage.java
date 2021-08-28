@@ -1,4 +1,5 @@
 package com.nextBase.pages;
+import com.nextBase.utilities.BrowserUtils;
 import com.nextBase.utilities.Driver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +10,9 @@ import java.util.concurrent.TimeUnit;
 public class CalendarPage extends BasePage {
     @FindBy(css = ".ui-btn-main")
     public WebElement add;
+
+    @FindBy(xpath = "//input[@name='name']")
+    public WebElement eventName;
 
     @FindBy(xpath = "//span[@data-bx-calendar-view='list']")
     public WebElement schedule;
@@ -55,13 +59,16 @@ public class CalendarPage extends BasePage {
     @FindBy(xpath = "//body")
     public WebElement descriptionInput;
 
+    @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
+    public WebElement descriptionFrame;
+
     @FindBy(xpath = "//span[contains(text(),'Ctrl+Enter')]")
     public WebElement save;
 
     @FindBy(xpath = "(//span[.='New Event'])[1]")
     public WebElement event;
 
-    @FindBy(xpath = "//span[.='Edit']")
+    @FindBy(xpath="//button[contains(@id,'_but_edit')]")
     public WebElement editEvent;
 
     @FindBy(xpath = "(//span[@class='calendar-timeline-stream-content-event-color'])[1]")
@@ -77,8 +84,8 @@ public class CalendarPage extends BasePage {
     public WebElement specialNotes;
 
     public void eventDescription(String description) {
-        Driver.get().switchTo().frame(2);
-        Driver.get().manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+        BrowserUtils.waitForVisibility(descriptionFrame,10);
+        Driver.get().switchTo().frame(descriptionFrame);
         descriptionInput.click();
         descriptionInput.sendKeys(description);
         Driver.get().switchTo().defaultContent();
