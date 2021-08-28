@@ -1,7 +1,8 @@
+@wip
 Feature: As a user, I should be able to navigate "Calendar" page so that user can filter and search, display, add and track
   the tasks or events on "Calendar" page.
 
-  @pass
+  //@pass
   Scenario:HR User adds new event with given details
     Given  User logins with "HR" credentials
     And user clicks "Calendar" menu
@@ -47,3 +48,15 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
     And user clicks "Calendar" menu
     When user clicks event and selects edit
     Then user should be able to change his-her event's name as "MY_TEST_EVENT"
+
+  Scenario: HR User deletes attendee by editing the event
+    Given  User logins with "HR" credentials
+    And user clicks "Calendar" menu
+    When user clicks event and selects edit
+    Then user should be able to delete an attendee
+
+  Scenario: HR User adds one more attendee by editing the event
+    Given  User logins with "HR" credentials
+    And user clicks "Calendar" menu
+    When user clicks event and selects edit
+    Then user should be able to add one more attendee("marketing29@cybertekschool.com") by editing the event

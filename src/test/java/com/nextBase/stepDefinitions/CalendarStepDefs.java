@@ -11,9 +11,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
+
 import java.awt.*;
 import java.util.Map;
-
 
 
 public class CalendarStepDefs {
@@ -72,7 +72,6 @@ public class CalendarStepDefs {
     @Then("user should be able to add event by clicking SAVE button and display event on calendar")
     public void user_should_be_able_to_add_event_by_clicking_SAVE_button_and_display_event_on_calendar() {
         calendarPage.save.click();
-
         String actualTitle = Driver.get().getTitle();
         String expectedTitle = ConfigurationReader.get(user + "_username") + ": Calendar";
         Assert.assertEquals(expectedTitle, actualTitle);
@@ -81,15 +80,14 @@ public class CalendarStepDefs {
 
     @When("user clicks event and selects edit")
     public void user_clicks_event_and_selects_edit() {
-
         calendarPage.eventDetails.click();
         calendarPage.eventDetails.click();
         calendarPage.editEvent.click();
+        BrowserUtils.waitForPageToLoad(10);
     }
 
     @Then("user should be able to change event color as {string}")
     public void user_should_be_able_to_change_event_color_as(String color) {
-        BrowserUtils.waitForPageToLoad(10);
         calendarPage.more.click();
         calendarPage.selectColor(color);
         calendarPage.save.click();
@@ -102,7 +100,6 @@ public class CalendarStepDefs {
 
     @Then("user should be able to change privacy as {string}")
     public void user_should_be_able_to_change_privacy_as(String privacy) {
-        BrowserUtils.waitForPageToLoad(10);
         calendarPage.more.click();
         if (!calendarPage.privateEvent.isSelected()) {
             calendarPage.privateEvent.click();
@@ -122,7 +119,6 @@ public class CalendarStepDefs {
 
     @Then("user should be able to change his-her availability as {string}")
     public void user_should_be_able_to_change_his_her_availability_as(String availability) {
-        BrowserUtils.waitForPageToLoad(10);
         calendarPage.more.click();
         BrowserUtils.waitForVisibility(calendarPage.privateEvent, 5);
         Select selectAvailability = new Select(calendarPage.availability);
@@ -135,9 +131,9 @@ public class CalendarStepDefs {
         calendarPage.eventName.sendKeys(string);
         calendarPage.save.click();
     }
+
     @Then("user should be able to change repeat section as {string}")
     public void user_should_be_able_to_change_repeat_section_as(String string) throws AWTException {
-        BrowserUtils.waitForPageToLoad(10);
         Select select = new Select(calendarPage.repeat);
         select.selectByVisibleText(string);
         calendarPage.save.click();
@@ -145,4 +141,23 @@ public class CalendarStepDefs {
         String expectedTitle = ConfigurationReader.get(user + "_username") + ": Calendar";
         Assert.assertEquals(expectedTitle, actualTitle);
     }
+
+    @Then("user should be able to delete an attendee")
+    public void user_should_be_able_to_delete_an_attendee() {
+        calendarPage.removeFirstAttendee.click();
+        calendarPage.save.click();
+        String actualTitle = Driver.get().getTitle();
+        String expectedTitle = ConfigurationReader.get(user + "_username") + ": Calendar";
+        Assert.assertEquals(expectedTitle, actualTitle);
+    }
+
+    @Then("user should be able to add one more attendee\\({string}) by editing the event")
+    public void user_should_be_able_to_add_one_more_attendee_by_editing_the_event(String newAttendee) {
+        calendarPage.addAttendees(newAttendee);
+        calendarPage.save.click();
+        String actualTitle = Driver.get().getTitle();
+        String expectedTitle = ConfigurationReader.get(user + "_username") + ": Calendar";
+        Assert.assertEquals(expectedTitle, actualTitle);
+    }
+
 }

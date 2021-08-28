@@ -41,6 +41,9 @@ public class CalendarPage extends BasePage {
     @FindBy(css = ".event-grid-dest-wrap")
     public WebElement attendeesField;
 
+    @FindBy(xpath = "(//span[@class='feed-event-del-but'])[2]")
+    public WebElement removeFirstAttendee;
+
     @FindBy(css = ".bx-lm-tab-department")
     public WebElement employeesAndDeps;
 
@@ -67,9 +70,6 @@ public class CalendarPage extends BasePage {
 
     @FindBy(xpath = "//span[contains(text(),'Ctrl+Enter')]")
     public WebElement save;
-
-    @FindBy(xpath = "(//span[.='New Event'])[1]")
-    public WebElement event;
 
     @FindBy(xpath="//button[contains(@id,'_but_edit')]")
     public WebElement editEvent;
