@@ -1,13 +1,14 @@
-@wip
 Feature: As a user, I should be able to navigate "Calendar" page so that user can filter and search, display, add and track
   the tasks or events on "Calendar" page.
 
   //@pass
+
   Scenario:HR User adds new event with given details
     Given  User logins with "HR" credentials
     And user clicks "Calendar" menu
     When user clicks add
     And enter the below event details and click Save button
+      | Event name              | NextBase-290                                                |
       | Description             | MY_FIRST_DESCRIPTION_OF_BIRTHDAY                           |
       | This event is important | true                                                       |
       | Event date              | 09/01/2021                                                 |
@@ -32,10 +33,12 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
     When user clicks event and selects edit
     Then user should be able to change privacy as "Private Event"
 
+
   Scenario: Marketing user tries to display HR user's event on his/her calendar
     Given User logins with "Marketing" credentials
     And user clicks "Calendar" menu
     When user clicks Schedule
+    Then user should not be able to display HR user's event on his-her calendar
 
   Scenario: HR User edits his-her availability as "Unsure"
     Given  User logins with "HR" credentials
@@ -60,3 +63,26 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
     And user clicks "Calendar" menu
     When user clicks event and selects edit
     Then user should be able to add one more attendee("marketing29@cybertekschool.com") by editing the event
+@wip
+  Scenario: Marketing user displays the invitations by using "Filter and search" box after clicking "Invitations" button
+    Given  User logins with "Marketing" credentials
+    And user clicks "Calendar" menu
+    When user clicks Filter and search and clicks "Invitations"
+    Then user should be able to display "Invitations"
+  @wip
+  Scenario: HR user filters events and-or tasks by using "Filter and Search" box after clicking "I'M AN ORGANIZER" button
+    Given  User logins with "HR" credentials
+    And user clicks "Calendar" menu
+    When user clicks Filter and search and clicks "I'M AN ORGANIZER"
+    Then user should be able to filter events
+
+  @wip
+  Scenario: Helpdesk user resets after selecting "Yes" under "Event with participants" menu and "Invited" under "Participant status"
+    Given  User logins with "Helpdesk" credentials
+    And user clicks "Calendar" menu
+    When user clicks Filter and search
+  And user selects "Yes" under Event with participants and "Invited" under Participation status
+
+
+
+

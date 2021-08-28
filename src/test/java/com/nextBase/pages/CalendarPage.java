@@ -3,8 +3,8 @@ import com.nextBase.utilities.BrowserUtils;
 import com.nextBase.utilities.Driver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class CalendarPage extends BasePage {
@@ -86,6 +86,9 @@ public class CalendarPage extends BasePage {
     @FindBy(xpath = "(//div[@class='calendar-slider-detail-option-value'])[3]")
     public WebElement specialNotes;
 
+    @FindBy(css = ".calendar-timeline-stream-content-event-name-link")
+    public List<WebElement> allEvents;
+
     public void eventDescription(String description) {
         BrowserUtils.waitForVisibility(descriptionFrame,10);
         Driver.get().switchTo().frame(descriptionFrame);
@@ -116,6 +119,14 @@ public class CalendarPage extends BasePage {
         otherColor.click();
         customColor.click();
         colorCode.sendKeys(color1+ Keys.ENTER);
+    }
+
+    public boolean checkEvents(String eventName){
+        List<String> list=new ArrayList<>();
+        for (WebElement allEvent : allEvents) {
+            list.add(allEvent.getText());
+        }
+        return list.contains(eventName);
     }
 
 }

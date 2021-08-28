@@ -11,14 +11,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
-
-import java.awt.*;
 import java.util.Map;
 
 
 public class CalendarStepDefs {
     String user = null;
     CalendarPage calendarPage = new CalendarPage();
+    String event_name=null;
 
     @Given("User logins with {string} credentials")
     public void user_logins_with_credentials(String userType) {
@@ -39,10 +38,12 @@ public class CalendarStepDefs {
 
     @When("enter the below event details and click Save button")
     public void enter_the_below_event_details_and_click_Save_button(Map<String, String> data) {
-
+        event_name=data.get("Event name");
         if (Boolean.parseBoolean(data.get("This event is important"))) {
             calendarPage.importance.click();
         }
+        calendarPage.eventName.clear();
+        calendarPage.eventName.sendKeys(event_name);
         calendarPage.dateFrom.clear();
         calendarPage.dateFrom.sendKeys(data.get("Event date"));
         calendarPage.dateTo.clear();
@@ -72,10 +73,7 @@ public class CalendarStepDefs {
     @Then("user should be able to add event by clicking SAVE button and display event on calendar")
     public void user_should_be_able_to_add_event_by_clicking_SAVE_button_and_display_event_on_calendar() {
         calendarPage.save.click();
-        String actualTitle = Driver.get().getTitle();
-        String expectedTitle = ConfigurationReader.get(user + "_username") + ": Calendar";
-        Assert.assertEquals(expectedTitle, actualTitle);
-
+        Assert.assertTrue(calendarPage.checkEvents(event_name));
     }
 
     @When("user clicks event and selects edit")
@@ -93,7 +91,7 @@ public class CalendarStepDefs {
         calendarPage.save.click();
         BrowserUtils.waitForPageToLoad(5);
         String style = calendarPage.eventColor.getAttribute("style");
-//        System.out.println(style);
+        System.out.println(style);
         String colorCode = "rgb(0, 0, 128)";
         Assert.assertTrue(style.contains(colorCode));
     }
@@ -128,12 +126,13 @@ public class CalendarStepDefs {
 
     @Then("user should be able to change his-her event's name as {string}")
     public void user_should_be_able_to_change_his_her_event_s_name_as(String string) {
+        calendarPage.eventName.clear();
         calendarPage.eventName.sendKeys(string);
         calendarPage.save.click();
     }
 
     @Then("user should be able to change repeat section as {string}")
-    public void user_should_be_able_to_change_repeat_section_as(String string) throws AWTException {
+    public void user_should_be_able_to_change_repeat_section_as(String string) {
         Select select = new Select(calendarPage.repeat);
         select.selectByVisibleText(string);
         calendarPage.save.click();
@@ -158,6 +157,41 @@ public class CalendarStepDefs {
         String actualTitle = Driver.get().getTitle();
         String expectedTitle = ConfigurationReader.get(user + "_username") + ": Calendar";
         Assert.assertEquals(expectedTitle, actualTitle);
+    }
+
+    @Then("user should not be able to display HR user's event on his-her calendar")
+    public void user_should_not_be_able_to_display_HR_user_s_event_on_his_her_calendar() {
+        Assert.assertFalse(calendarPage.checkEvents(event_name));
+    }
+
+    @When("user clicks Filter and search and clicks {string}")
+    public void user_clicks_Filter_and_search_and_clicks(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("user should be able to display {string}")
+    public void user_should_be_able_to_display(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("user should be able to filter events")
+    public void user_should_be_able_to_filter_events() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @When("user clicks Filter and search")
+    public void user_clicks_Filter_and_search() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @When("user selects {string} under Event with participants and {string} under Participation status")
+    public void user_selects_under_Event_with_participants_and_under_Participation_status(String string, String string2) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
 
 }
