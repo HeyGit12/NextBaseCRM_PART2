@@ -105,7 +105,7 @@ public class CalendarStepDefs {
     public void user_should_be_able_to_change_privacy_as(String privacy) {
         calendarPage.more.click();
         BrowserUtils.waitForVisibility(calendarPage.privateEvent,5);
-        calendarPage.privateEvent.click();
+        if(!calendarPage.privateEvent.isSelected()){calendarPage.privateEvent.click();}
         calendarPage.save.click();
         calendarPage.eventDetails.click();
         calendarPage.eventDetails.click();
@@ -117,5 +117,14 @@ public class CalendarStepDefs {
     @When("user clicks Schedule")
     public void user_clicks_Schedule() {
         calendarPage.schedule.click();
+    }
+
+    @Then("user should be able to change his-her availability as {string}")
+    public void user_should_be_able_to_change_his_her_availability_as(String availability) {
+        calendarPage.more.click();
+        BrowserUtils.waitForVisibility(calendarPage.privateEvent,5);
+        Select selectAvailability = new Select(calendarPage.availability);
+        selectAvailability.selectByVisibleText(availability);
+        calendarPage.save.click();
     }
 }

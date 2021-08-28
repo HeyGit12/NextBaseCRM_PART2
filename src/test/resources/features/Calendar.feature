@@ -1,4 +1,4 @@
-@wip
+
 Feature: As a user, I should be able to navigate "Calendar" page so that user can filter and search, display, add and track
   the tasks or events on "Calendar" page.
 
@@ -24,7 +24,7 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
     And user clicks "Calendar" menu
     When user clicks event and selects edit
     Then user should be able to change event color as "Navy blue"
-
+  @wip
   Scenario:HR User edits privacy as "Private event"
     Given  User logins with "HR" credentials
     And user clicks "Calendar" menu
@@ -35,7 +35,10 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
     Given User logins with "Marketing" credentials
     And user clicks "Calendar" menu
     When user clicks Schedule
-
-
-
+  @wip
+    Scenario: HR User edits his/her availability as "Unsure"
+      Given  User logins with "HR" credentials
+      And user clicks "Calendar" menu
+      When user clicks event and selects edit
+      Then user should be able to change his-her availability as "Unsure"
 
