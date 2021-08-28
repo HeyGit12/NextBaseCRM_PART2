@@ -10,6 +10,9 @@ public class CalendarPage extends BasePage {
     @FindBy(css = ".ui-btn-main")
     public WebElement add;
 
+    @FindBy(xpath = "//span[@data-bx-calendar-view='list']")
+    public WebElement schedule;
+
     @FindBy(xpath = "//input[@name='importance']")
     public WebElement importance;
 

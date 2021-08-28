@@ -34,8 +34,8 @@ public class CalendarStepDefs {
         new HomePage().navigateToMenu(menu);
     }
 
-    @When("user clicks {string}")
-    public void user_clicks(String string) {
+    @When("user clicks add")
+    public void user_clicks_add() {
         calendarPage.add.click();
     }
 
@@ -112,5 +112,10 @@ public class CalendarStepDefs {
         String text = calendarPage.specialNotes.getText();
         System.out.println(text);
         Assert.assertEquals(privacy,text);
+    }
+
+    @When("user clicks Schedule")
+    public void user_clicks_Schedule() {
+        calendarPage.schedule.click();
     }
 }

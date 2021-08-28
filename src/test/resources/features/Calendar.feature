@@ -1,10 +1,11 @@
+@wip
 Feature: As a user, I should be able to navigate "Calendar" page so that user can filter and search, display, add and track
   the tasks or events on "Calendar" page.
 
   Scenario:HR User adds new event with given details
     Given  User logins with "HR" credentials
     And user clicks "Calendar" menu
-    When user clicks "Add"
+    When user clicks add
     And enter the below event details and click Save button
       | Description             | MY_FIRST_DESCRIPTION_OF_BIRTHDAY                           |
       | This event is important | true                                                       |
@@ -29,4 +30,12 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
     And user clicks "Calendar" menu
     When user clicks event and selects edit
     Then user should be able to change privacy as "Private Event"
+
+  Scenario: Marketing user tries to display HR user's event on his/her calendar
+    Given User logins with "Marketing" credentials
+    And user clicks "Calendar" menu
+    When user clicks Schedule
+
+
+
 
