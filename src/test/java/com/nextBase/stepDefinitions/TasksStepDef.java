@@ -160,6 +160,33 @@ public class TasksStepDef {
     }
 
 
+    @When("user open New task module")
+    public void user_open_New_task_module() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @When("user click All templates")
+    public void user_click_All_templates() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @When("user click ADD")
+    public void user_click_ADD() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("user must be on {string} page")
+    public void user_must_be_on_page(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+
+
+
 
 
 

@@ -53,7 +53,7 @@ Feature: Tasks page functionality
     And  user click "ADD TASK" button
     Then user should be ableto create subtask
 
-  @wip
+
   Scenario: Marketing User can add participants,observers,checklist
     Given user already logged in with "marketing1@cybertekschool.com" username "UserUser" password
     When user click "Tasks" "All" under Activity stream
@@ -65,3 +65,13 @@ Feature: Tasks page functionality
       | Observers    | helpdesk1@cybertekschool.com |
     And user click "SAVE CHANGES" button
     Then user should be add informations
+
+
+  @wip
+    Scenario: HR User can be redirected to "New task template" page
+      Given user already logged in with "hr1@cybertekschool.com" username "UserUser" password
+      When user click "Tasks" "All" under Activity stream
+      And user open New task module
+      And user click All templates
+      And user click ADD
+      Then user must be on "New task template" page
