@@ -124,4 +124,38 @@ public class TasksStepDef {
 
 
 
+
+
+
+    @When("user click plus icon")
+    public void user_click_plus_icon() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @When("user add subtask")
+    public void user_add_subtask() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @When("user add Tags")
+    public void user_add_Tags() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("user should be ableto create subtask")
+    public void user_should_be_ableto_create_subtask() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+
+
+
+
+
+
+
 }

@@ -23,7 +23,8 @@ Feature: Tasks page functionality
       | Things to do | Test |
     And user click "SAVE CHANGES" button
     Then user should be able to edit the task
-  @wip
+
+
   Scenario:Hr user can use edit functionality
     Given user already logged in with "hr1@cybertek.com" username "UserUser" password
     When user click "Tasks" "All" under Activity stream
@@ -38,3 +39,16 @@ Feature: Tasks page functionality
       | Reminder        | alper@cybertekschool.com |
       | Estimate        | 02:30:00                 |
       | Dependent tasks | things to do             |
+
+  @wip
+    Scenario: Marketing User can create a subtask
+      Given user already logged in with "marketing1@cybertek.com" username "UserUser" password
+      When user click plus icon
+      And user enter following informations
+        | Things to do | Test.m.v.1              |
+        | Description  | Subtask created |
+      And user add subtask
+      And user click More
+      And user add Tags
+      And  user click "ADD TASK" button
+      Then user should be ableto create subtask
