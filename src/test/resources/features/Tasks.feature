@@ -11,3 +11,4 @@ Feature: Tasks page functionality
     And user enter deadline
     And user Add mention
     And  user click ADD TASK button
+    Then user should be able to add new task
