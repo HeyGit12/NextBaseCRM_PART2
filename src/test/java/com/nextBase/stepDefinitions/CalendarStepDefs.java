@@ -11,13 +11,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
+
 import java.util.Map;
 
 
 public class CalendarStepDefs {
     String user = null;
     CalendarPage calendarPage = new CalendarPage();
-    String event_name=null;
+    String event_name = null;
 
     @Given("User logins with {string} credentials")
     public void user_logins_with_credentials(String userType) {
@@ -29,16 +30,18 @@ public class CalendarStepDefs {
     @Given("user clicks {string} menu")
     public void user_clicks_menu(String menu) {
         new HomePage().navigateToMenu(menu);
+        BrowserUtils.waitForPageToLoad(3);
     }
 
     @When("user clicks add")
     public void user_clicks_add() {
         calendarPage.add.click();
+        BrowserUtils.waitForPageToLoad(5);
     }
 
     @When("enter the below event details and click Save button")
     public void enter_the_below_event_details_and_click_Save_button(Map<String, String> data) {
-        event_name=data.get("Event name");
+        event_name = data.get("Event name");
         if (Boolean.parseBoolean(data.get("This event is important"))) {
             calendarPage.importance.click();
         }
@@ -81,7 +84,8 @@ public class CalendarStepDefs {
         calendarPage.eventDetails.click();
         calendarPage.eventDetails.click();
         calendarPage.editEvent.click();
-        BrowserUtils.waitForPageToLoad(10);
+        //BrowserUtils.waitForPageToLoad(10);
+        BrowserUtils.waitForClickablility(calendarPage.more, 10);
     }
 
     @Then("user should be able to change event color as {string}")
@@ -164,34 +168,59 @@ public class CalendarStepDefs {
         Assert.assertFalse(calendarPage.checkEvents(event_name));
     }
 
-    @When("user clicks Filter and search and clicks {string}")
-    public void user_clicks_Filter_and_search_and_clicks(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @When("user clicks Filter and search and clicks Invitations")
+    public void user_clicks_Filter_and_search_and_clicks_Invitations() {
+        calendarPage.filterAndSearch.click();
+        calendarPage.invitations.click();
     }
 
     @Then("user should be able to display {string}")
-    public void user_should_be_able_to_display(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void user_should_be_able_to_display(String expected) {
+        String actual = calendarPage.currentFilter.getText();
+        System.out.println(actual);
+        Assert.assertEquals(expected, actual);
     }
 
-    @Then("user should be able to filter events")
-    public void user_should_be_able_to_filter_events() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @When("user clicks Filter and search and clicks I'M AN ORGANIZER")
+    public void user_clicks_Filter_and_search_and_clicks_I_M_AN_ORGANIZER() {
+        calendarPage.filterAndSearch.click();
+        calendarPage.i_am_an_organiser.click();
     }
 
     @When("user clicks Filter and search")
     public void user_clicks_Filter_and_search() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        calendarPage.filterAndSearch.click();
     }
 
-    @When("user selects {string} under Event with participants and {string} under Participation status")
-    public void user_selects_under_Event_with_participants_and_under_Participation_status(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @When("user selects Yes under Event with participants, Invited under Participation status and click reset")
+    public void user_selects_Yes_under_Event_with_participants_Invited_under_Participation_status_and_click_reset(String string, String string2) {
+        calendarPage.addField.click();
+        calendarPage.participationStatus.click();
+        BrowserUtils.waitForPageToLoad(2);
+        calendarPage.eventWithParticipants.click();
+        calendarPage.participantsYes.click();
+        BrowserUtils.waitForClickablility(calendarPage.participationStatusField, 2);
+        calendarPage.participationStatusField.click();
+        calendarPage.participationInvited.click();
+        calendarPage.reset.click();
+
+    }
+
+    @Then("user should be able to reset user input fields to {string}")
+    public void user_should_be_able_to_reset_user_input_fields_to(String expected) {
+
+        String actual1 = calendarPage.eventWithParticipants.getText();
+        String actual2 = calendarPage.participationStatusField.getText();
+        Assert.assertEquals(expected, actual1);
+        Assert.assertEquals(expected, actual2);
+    }
+
+    @Then("selects edit and delete event")
+    public void selects_edit_and_delete_event() {
+        calendarPage.schedule.click();
+        calendarPage.eventDetails.click();
+        calendarPage.eventDetails.click();
+        calendarPage.delete.click();
     }
 
 }

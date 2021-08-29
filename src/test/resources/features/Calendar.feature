@@ -1,3 +1,4 @@
+@wip
 Feature: As a user, I should be able to navigate "Calendar" page so that user can filter and search, display, add and track
   the tasks or events on "Calendar" page.
 
@@ -8,13 +9,13 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
     And user clicks "Calendar" menu
     When user clicks add
     And enter the below event details and click Save button
-      | Event name              | NextBase-290                                                |
+      | Event name              | NextBase-290                                               |
       | Description             | MY_FIRST_DESCRIPTION_OF_BIRTHDAY                           |
       | This event is important | true                                                       |
-      | Event date              | 09/01/2021                                                 |
-      | Event end date          | 09/05/2021                                                 |
+      | Event date              | 09/25/2021                                                 |
+      | Event end date          | 09/30/2021                                                 |
       | Time zone               | (UTC +02:00) Europe/Stockholm                              |
-      | Location                | Central Meeting Room                                       |
+      | Location                | West Meeting Room                                          |
       | Attendees               | marketing1@cybertekschool.com/helpdesk1@cybertekschool.com |
       | Event color             | Pink                                                       |
       | Availability            | Occupied                                                   |
@@ -62,26 +63,32 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
     Given  User logins with "HR" credentials
     And user clicks "Calendar" menu
     When user clicks event and selects edit
-    Then user should be able to add one more attendee("marketing29@cybertekschool.com") by editing the event
-@wip
+    Then user should be able to add one more attendee("marketing1@cybertekschool.com") by editing the event
+
   Scenario: Marketing user displays the invitations by using "Filter and search" box after clicking "Invitations" button
     Given  User logins with "Marketing" credentials
     And user clicks "Calendar" menu
-    When user clicks Filter and search and clicks "Invitations"
+    When user clicks Filter and search and clicks Invitations
     Then user should be able to display "Invitations"
-  @wip
+
   Scenario: HR user filters events and-or tasks by using "Filter and Search" box after clicking "I'M AN ORGANIZER" button
     Given  User logins with "HR" credentials
     And user clicks "Calendar" menu
-    When user clicks Filter and search and clicks "I'M AN ORGANIZER"
-    Then user should be able to filter events
+    When user clicks Filter and search and clicks I'M AN ORGANIZER
+    Then user should be able to display "I'm an organiser"
 
-  @wip
   Scenario: Helpdesk user resets after selecting "Yes" under "Event with participants" menu and "Invited" under "Participant status"
     Given  User logins with "Helpdesk" credentials
     And user clicks "Calendar" menu
     When user clicks Filter and search
-  And user selects "Yes" under Event with participants and "Invited" under Participation status
+    And user selects Yes under Event with participants, Invited under Participation status and click reset
+    Then user should be able to reset user input fields to "Not specified"
+
+  Scenario: delete record
+    Given  User logins with "HR" credentials
+    And user clicks "Calendar" menu
+    Then selects edit and delete event
+
 
 
 
