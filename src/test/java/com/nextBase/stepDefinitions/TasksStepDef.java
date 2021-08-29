@@ -190,6 +190,36 @@ public class TasksStepDef {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+    @When("user click tasks check box")
+    public void user_click_tasks_check_box() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @When("user select Delete from SELECT ACTION menu")
+    public void user_select_Delete_from_SELECT_ACTION_menu() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @When("user click APPLY")
+    public void user_click_APPLY() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @When("user click CONTINUE")
+    public void user_click_CONTINUE() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("user should be able to delete task")
+    public void user_should_be_able_to_delete_task() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
 
 
 }
