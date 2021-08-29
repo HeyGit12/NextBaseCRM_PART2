@@ -153,6 +153,12 @@ public class TasksStepDef {
 
 
 
+    @Then("user should be add informations")
+    public void user_should_be_add_informations() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
 
 
 

@@ -1,7 +1,7 @@
 Feature: Tasks page functionality
 
   Scenario: HR User can create task
-    Given user already logged in with "hr1@cybertek.com" username "UserUser" password
+    Given user already logged in with "hr1@cybertekschool.com" username "UserUser" password
     When user click "Tasks" "All" under Activity stream
     And user click NEW TASK button
     And user enter following informations
@@ -15,7 +15,7 @@ Feature: Tasks page functionality
 
 
   Scenario: Marketing User can edit the task
-    Given user already logged in with "marketing1@cybertek.com" username "UserUser" password
+    Given user already logged in with "marketing1@cybertekschool.com" username "UserUser" password
     When user click "Tasks" "All" under Activity stream
     And user click created task
     And user click EDIT
@@ -26,7 +26,7 @@ Feature: Tasks page functionality
 
 
   Scenario:Hr user can use edit functionality
-    Given user already logged in with "hr1@cybertek.com" username "UserUser" password
+    Given user already logged in with "hr1@cybertekschool.com" username "UserUser" password
     When user click "Tasks" "All" under Activity stream
     And user click created task
     And user click EDIT
@@ -40,15 +40,28 @@ Feature: Tasks page functionality
       | Estimate        | 02:30:00                 |
       | Dependent tasks | things to do             |
 
+
+  Scenario: Marketing User can create a subtask
+    Given user already logged in with "marketing1@cybertekschool.com" username "UserUser" password
+    When user click plus icon
+    And user enter following informations
+      | Things to do | Test.m.v.1      |
+      | Description  | Subtask created |
+    And user add subtask
+    And user click More
+    And user add Tags
+    And  user click "ADD TASK" button
+    Then user should be ableto create subtask
+
   @wip
-    Scenario: Marketing User can create a subtask
-      Given user already logged in with "marketing1@cybertek.com" username "UserUser" password
-      When user click plus icon
-      And user enter following informations
-        | Things to do | Test.m.v.1              |
-        | Description  | Subtask created |
-      And user add subtask
-      And user click More
-      And user add Tags
-      And  user click "ADD TASK" button
-      Then user should be ableto create subtask
+  Scenario: Marketing User can add participants,observers,checklist
+    Given user already logged in with "marketing1@cybertekschool.com" username "UserUser" password
+    When user click "Tasks" "All" under Activity stream
+    And user click created task
+    And user click EDIT
+    And user enter following informations
+      | Things to do | checklist tested             |
+      | Participants | hr1@cybertekschool.com       |
+      | Observers    | helpdesk1@cybertekschool.com |
+    And user click "SAVE CHANGES" button
+    Then user should be add informations
