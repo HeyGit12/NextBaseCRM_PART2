@@ -17,8 +17,6 @@ public abstract class BasePage {
     public WebElement Drive;
 
 
-
-
     public void navigateToModule(String tab, String module) {
         String tabLocator = "//a[@title='" + tab + "']";
         String moduleLocator = "(//span[.='" + module + "'])[1]";
