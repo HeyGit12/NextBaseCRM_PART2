@@ -1,5 +1,5 @@
 package com.nextBase.pages;
 
-public class TaskPage {
+public class TasksPage {
     
 }
