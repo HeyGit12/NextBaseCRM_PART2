@@ -47,6 +47,7 @@ public class TasksStepDef {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+
     @When("user click {string} button")
     public void user_click_button(String string) {
         // Write code here that turns the phrase above into concrete actions
@@ -58,9 +59,6 @@ public class TasksStepDef {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
-
-
 
 
     @When("user click created task")
@@ -80,10 +78,6 @@ public class TasksStepDef {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
-
-
-
 
 
     @When("user click More")
@@ -123,10 +117,6 @@ public class TasksStepDef {
     }
 
 
-
-
-
-
     @When("user click plus icon")
     public void user_click_plus_icon() {
         // Write code here that turns the phrase above into concrete actions
@@ -150,7 +140,6 @@ public class TasksStepDef {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
 
 
     @Then("user should be add informations")
@@ -184,11 +173,23 @@ public class TasksStepDef {
         throw new io.cucumber.java.PendingException();
     }
 
+    @When("user click Options")
+    public void user_click_Options() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
 
+    @When("user click Responsible person can change deadline check box and Approve task when completed check box")
+    public void user_click_Responsible_person_can_change_deadline_check_box_and_Approve_task_when_completed_check_box() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
 
-
-
-
+    @Then("user must be create new task template")
+    public void user_must_be_create_new_task_template() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
 
 
 }

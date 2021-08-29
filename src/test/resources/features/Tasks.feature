@@ -68,10 +68,22 @@ Feature: Tasks page functionality
 
 
   @wip
-    Scenario: HR User can be redirected to "New task template" page
-      Given user already logged in with "hr1@cybertekschool.com" username "UserUser" password
-      When user click "Tasks" "All" under Activity stream
-      And user open New task module
-      And user click All templates
-      And user click ADD
-      Then user must be on "New task template" page
+  Scenario: HR User can be redirected to "New task template" page
+    Given user already logged in with "hr1@cybertekschool.com" username "UserUser" password
+    When user click "Tasks" "All" under Activity stream
+    And user open New task module
+    And user click All templates
+    And user click ADD
+    And user must be on "New task template" page
+    And user click High Priority check box
+    And user Add mention
+    And user enter following informations
+      | Things to do | Test.h |
+      | Description  | Test   |
+      | Deadline in  | 7335   |
+    And user click Options
+    And user click Responsible person can change deadline check box and Approve task when completed check box
+    And user click "SAVE CHANGES" button
+    Then user must be create new task template
+
+
