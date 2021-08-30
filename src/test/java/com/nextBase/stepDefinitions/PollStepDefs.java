@@ -12,6 +12,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -81,7 +82,20 @@ public class PollStepDefs {
         String actualText = Driver.get().findElement(By.xpath("//span[@class='bxhtmled-metion']")).getText();
         Assert.assertEquals(expText,actualText);
     }
+    @When("the user adds question and answers")
+    public void the_user_adds_question_and_answers() {
+        pollPage.addQuestion.click();
+        Driver.get().findElement(By.xpath("//input[@placeholder='Answer  2']")).click();
+    }
 
+    @Then("the user should be able to add questions and answers")
+    public void the_user_should_be_able_to_add_questions_and_answers() {
+        WebElement addedQuestion = Driver.get().findElement(By.id("question_1"));
+        WebElement addedAnswer = Driver.get().findElement(By.xpath("//input[@placeholder='Answer  3']"));
+
+        Assert.assertTrue(addedAnswer.isEnabled());
+        Assert.assertTrue(addedQuestion.isEnabled());
+    }
 
 
 }

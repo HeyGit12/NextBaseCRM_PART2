@@ -19,6 +19,11 @@ public class PollPage extends BasePage{
     @FindBy(id = "bx-b-mention-blogPostForm")
     public WebElement addMention;
 
+    @FindBy(xpath = "//a[.='Add question']")
+    public WebElement addQuestion;
+
+
+
 
 
     public void addContact(String email){

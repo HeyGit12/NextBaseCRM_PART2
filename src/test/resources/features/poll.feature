@@ -29,13 +29,25 @@ Feature: Poll activity
       | Human Resources |
       | Marketing       |
 
-  @wip
+
   Scenario Outline:Add mention to Poll
     When the user logins as a "<userType>"
     And the user navigates to Poll tab
     And the user clicks on add mention icon and mentions "marketing84@cybertekschool.com"
     Then the user should be able to add "marketing84@cybertekschool.com" as a mention
 
+    Examples:
+      | userType        |
+      | Helpdesk        |
+      | Human Resources |
+      | Marketing       |
+
+  @wip
+  Scenario Outline:Add questions and answers to Poll
+    When the user logins as a "<userType>"
+    And the user navigates to Poll tab
+    And the user adds question and answers
+    Then the user should be able to add questions and answers
 
     Examples:
       | userType        |
