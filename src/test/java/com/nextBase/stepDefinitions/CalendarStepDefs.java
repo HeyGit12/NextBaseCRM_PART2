@@ -11,6 +11,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.Color;
 
 import java.util.Map;
 
@@ -95,9 +96,9 @@ public class CalendarStepDefs {
         calendarPage.save.click();
         BrowserUtils.waitFor(2);
         String style = calendarPage.eventColor.getAttribute("style");
-        System.out.println(style);
-        String colorCode = "rgb(0, 0, 128)";
-        Assert.assertTrue(style.contains(colorCode));
+        Color a=Color.fromString(color);
+        String expected = a.asRgb();
+        Assert.assertTrue(style.contains(expected));
     }
 
     @Then("user should be able to change privacy as {string}")

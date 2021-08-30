@@ -57,11 +57,11 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
 	# 11. HR User can filter events and/or tasks by using "Filter and search" box after clicking "I'M AN ORGANISER" button.
 	# 12. Helpdesk User can reset after selecting "Yes" under "Event with participants" menu and "Invited" under "Participant status".
 	@NEXTBASE-311
-	Scenario: Verify that HR User should be able to edit the 1st AC's task color as "Navy Blue" by using "other color".
+	Scenario: Verify that HR User should be able to edit the 1st AC's task color as "Navy" by using "other color".
 		Given  User logins with "HR" credentials
 		    And user clicks "Calendar" menu
 		    When user clicks event and selects edit
-		    Then user should be able to change event color as "Navy Blue"
+		    Then user should be able to change event color as "Navy"
 
 	#*User Story:*
 	#
