@@ -11,6 +11,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -24,25 +25,18 @@ public class PollStepDefs {
 
     @When("the user logins as a {string}")
     public void the_user_logins_as_a(String userType) {
-        String username = null;
-        String password = null;
-
-        if (userType.equals("Helpdesk")) {
-            username = ConfigurationReader.get("helpdesk_username");
-            password = ConfigurationReader.get("helpdesk_password");
-        } else if (userType.equals("Human Resources")) {
-            username = ConfigurationReader.get("human_resources_username");
-            password = ConfigurationReader.get("human_resources_password");
-        } else if (userType.equals("Marketing")) {
-            username = ConfigurationReader.get("marketing_username");
-            password = ConfigurationReader.get("marketing_password");
-        }
+        new LoginPage().loginAsA(userType);
     }
 
-    @When("the user clicks on Poll tab and adds {string},{string}")
-    public void the_user_clicks_on_Poll_tab_and_adds(String contact1, String contact2) {
+    @When("the user navigates to Poll tab")
+    public void the_user_navigates_to_Poll_tab() {
         BrowserUtils.waitFor(1);
         new HomePage().pollTab.click();
+    }
+
+    @When("the user selects {string},{string} from contacts")
+    public void the_user_clicks_on_Poll_tab_and_adds(String contact1, String contact2) {
+
         pollPage.addMoreBttn.click();
         pollPage.empAndDeps.click();
         pollPage.addContact(contact1);
@@ -55,6 +49,37 @@ public class PollStepDefs {
         boolean assertion2 = pollPage.checkIfAdded(contact2);
         Assert.assertTrue(assertion1);
         Assert.assertTrue(assertion2);
+    }
+
+    @When("the user adds {string} from link option")
+    public void the_user_clicks_on_Poll_tab_and_adds_from_link_option(String expLink) {
+        pollPage.link.click();
+        BrowserUtils.waitFor(1);
+        Driver.get().findElement(By.id("linkidPostFormLHE_blogPostForm-text")).sendKeys("Headset");
+        Driver.get().findElement(By.id("linkidPostFormLHE_blogPostForm-href")).sendKeys(expLink + Keys.ENTER);
+        BrowserUtils.waitFor(1);
+    }
+
+    @Then("the user should be able to add {string} as a link")
+    public void the_user_should_be_able_to_add_as_a_link(String actLink) {
+        Driver.get().switchTo().frame(0);
+        String linkLocator = "//a[@href='"+ actLink +"']";
+        boolean linkAssertion = Driver.get().findElement(By.xpath(linkLocator)).isEnabled();
+        Assert.assertTrue(linkAssertion);
+    }
+
+    @When("the user clicks on add mention icon and mentions {string}")
+    public void the_user_clicks_on_add_mention_icon_and_mentions(String mentionEmail) {
+        pollPage.addMention.click();
+        pollPage.empAndDeps.click();
+        pollPage.addContact(mentionEmail);
+    }
+
+    @Then("the user should be able to add {string} as a mention")
+    public void the_user_should_be_able_to_add_mention(String expText) {
+        Driver.get().switchTo().frame(0);
+        String actualText = Driver.get().findElement(By.xpath("//span[@class='bxhtmled-metion']")).getText();
+        Assert.assertEquals(expText,actualText);
     }
 
 

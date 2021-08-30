@@ -13,6 +13,14 @@ public class PollPage extends BasePage{
     @FindBy(xpath = "//a[@href='#switchTab'][2]")
     public WebElement empAndDeps;
 
+    @FindBy(xpath = "//span[@title='Link']")
+    public WebElement link;
+
+    @FindBy(id = "bx-b-mention-blogPostForm")
+    public WebElement addMention;
+
+
+
     public void addContact(String email){
         String emailLocator = "//div[@class='bx-finder-company-department-employee-name' and .='" + email +"']";
         Driver.get().findElement(By.xpath(emailLocator)).click();
