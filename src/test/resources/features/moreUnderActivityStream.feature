@@ -22,7 +22,9 @@ Feature: Announcement function from "More"
   Scenario Outline: Announcement with different accounts <userType>
     Given the user logged in as "<userType>"
     When the user opens Announcement panel
-    And the user inserts a video
+    And the user enters a video link
+    Then the user should be able to see video is inserted
+
 
     Examples:
       | userType       |
