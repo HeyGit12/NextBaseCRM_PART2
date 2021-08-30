@@ -30,7 +30,7 @@ public class CalendarStepDefs {
     @Given("user clicks {string} menu")
     public void user_clicks_menu(String menu) {
         new HomePage().navigateToMenu(menu);
-        BrowserUtils.waitForPageToLoad(3);
+        BrowserUtils.waitForPageToLoad(5);
     }
 
     @When("user clicks add")
@@ -81,10 +81,10 @@ public class CalendarStepDefs {
 
     @When("user clicks event and selects edit")
     public void user_clicks_event_and_selects_edit() {
-        calendarPage.eventDetails.click();
+       // actions.doubleClick(calendarPage.eventDetails).perform();        // ****DOUBLE CLICK****
+        calendarPage.schedule.click();
         calendarPage.eventDetails.click();
         calendarPage.editEvent.click();
-        //BrowserUtils.waitForPageToLoad(10);
         BrowserUtils.waitForClickablility(calendarPage.more, 10);
     }
 
@@ -93,7 +93,7 @@ public class CalendarStepDefs {
         calendarPage.more.click();
         calendarPage.selectColor(color);
         calendarPage.save.click();
-        BrowserUtils.waitForPageToLoad(5);
+        BrowserUtils.waitFor(2);
         String style = calendarPage.eventColor.getAttribute("style");
         System.out.println(style);
         String colorCode = "rgb(0, 0, 128)";
@@ -107,8 +107,9 @@ public class CalendarStepDefs {
             calendarPage.privateEvent.click();
         }
         calendarPage.save.click();
+        calendarPage.schedule.click();
         calendarPage.eventDetails.click();
-        calendarPage.eventDetails.click();
+        calendarPage.openEvent.click();
         String text = calendarPage.specialNotes.getText();
         System.out.println(text);
         Assert.assertEquals(privacy, text);
@@ -193,10 +194,11 @@ public class CalendarStepDefs {
     }
 
     @When("user selects Yes under Event with participants, Invited under Participation status and click reset")
-    public void user_selects_Yes_under_Event_with_participants_Invited_under_Participation_status_and_click_reset(String string, String string2) {
+    public void user_selects_Yes_under_Event_with_participants_Invited_under_Participation_status_and_click_reset() {
         calendarPage.addField.click();
-        calendarPage.participationStatus.click();
-        BrowserUtils.waitForPageToLoad(2);
+        if (!calendarPage.participationStatus.isEnabled()) {
+            calendarPage.participationStatus.click();
+        }
         calendarPage.eventWithParticipants.click();
         calendarPage.participantsYes.click();
         BrowserUtils.waitForClickablility(calendarPage.participationStatusField, 2);
@@ -213,14 +215,6 @@ public class CalendarStepDefs {
         String actual2 = calendarPage.participationStatusField.getText();
         Assert.assertEquals(expected, actual1);
         Assert.assertEquals(expected, actual2);
-    }
-
-    @Then("selects edit and delete event")
-    public void selects_edit_and_delete_event() {
-        calendarPage.schedule.click();
-        calendarPage.eventDetails.click();
-        calendarPage.eventDetails.click();
-        calendarPage.delete.click();
     }
 
 }

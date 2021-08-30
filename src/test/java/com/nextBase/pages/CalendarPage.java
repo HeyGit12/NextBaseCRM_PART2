@@ -71,16 +71,19 @@ public class CalendarPage extends BasePage {
     @FindBy(xpath = "//span[contains(text(),'Ctrl+Enter')]")
     public WebElement save;
 
-    @FindBy(xpath = "//button[contains(@id,'_but_edit')]")
+    @FindBy(xpath = "//span[@class='calendar-right-block-event-info-btn'][2]")
     public WebElement editEvent;
+
+    @FindBy(xpath = "//span[@class='calendar-right-block-event-info-btn'][1]")
+    public WebElement openEvent;
 
     @FindBy(xpath = "(//span[@class='calendar-timeline-stream-content-event-color'])[1]")
     public WebElement eventColor;
 
-    @FindBy(name = "private_event")
+    @FindBy(xpath = "//input[@name='private_event']")
     public WebElement privateEvent;
 
-    @FindBy(xpath = "(//div[@class='calendar-timeline-stream-content-event-members'])[1]")
+    @FindBy(css = ".calendar-timeline-stream-content-event")
     public WebElement eventDetails;
 
     @FindBy(xpath = "(//div[@class='calendar-slider-detail-option-value'])[3]")
@@ -121,9 +124,6 @@ public class CalendarPage extends BasePage {
 
     @FindBy(xpath = "(//span[contains(text(),'Reset')])[2]")
     public WebElement reset;
-
-    @FindBy(xpath = "//button[contains(@id,'_but_del')]")
-    public WebElement delete;
 
     public void eventDescription(String description) {
         BrowserUtils.waitForVisibility(descriptionFrame, 10);
