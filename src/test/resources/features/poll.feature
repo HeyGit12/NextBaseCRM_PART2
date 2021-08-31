@@ -1,9 +1,10 @@
+@wip
 Feature: Poll activity
 
   Background:
     Given The user is on log in page
 
-
+  @NEXTBASE-325
   Scenario Outline:Add users from contact list to Poll
     When the user logins as a "<userType>"
     And the user navigates to Poll tab
@@ -18,7 +19,7 @@ Feature: Poll activity
       | Human Resources | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
       | Marketing       | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
 
-
+  @NEXTBASE-326
   Scenario Outline:Add link to Poll
     When the user logins as a "<userType>"
     And the user navigates to Poll tab
@@ -32,7 +33,7 @@ Feature: Poll activity
       | Human Resources | https://www.amazon.com/Logitech-Headset-H390-Noise-Cancelling/dp/B000UXZQ42/ref=lp_16225007011_1_9 |
       | Marketing       | https://www.amazon.com/Logitech-Headset-H390-Noise-Cancelling/dp/B000UXZQ42/ref=lp_16225007011_1_9 |
 
-
+  @NEXTBASE-327
   Scenario Outline:Add mention to Poll
     When the user logins as a "<userType>"
     And the user navigates to Poll tab
@@ -46,7 +47,7 @@ Feature: Poll activity
       | Human Resources | marketing84@cybertekschool.com |
       | Marketing       | marketing84@cybertekschool.com |
 
-
+  @NEXTBASE-328
   Scenario Outline:Add questions and answers to Poll
     When the user logins as a "<userType>"
     And the user navigates to Poll tab
@@ -59,7 +60,7 @@ Feature: Poll activity
       | Human Resources |
       | Marketing       |
 
-
+  @NEXTBASE-329
   Scenario Outline:Delete questions and answers
     When the user logins as a "<userType>"
     And the user navigates to Poll tab
@@ -73,7 +74,7 @@ Feature: Poll activity
       | Human Resources |
       | Marketing       |
 
-  @wip
+  @NEXTBASE-330 @NEXTBASE-331
   Scenario Outline:Provide the attendees multiple choice and send poll
     When the user logins as a "<userType>"
     And the user navigates to Poll tab
