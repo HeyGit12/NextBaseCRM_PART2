@@ -22,6 +22,11 @@ public class PollPage extends BasePage{
     @FindBy(xpath = "//a[.='Add question']")
     public WebElement addQuestion;
 
+    @FindBy(id = "blog-submit-button-save")
+    public WebElement sendBttn;
+
+    @FindBy(id = "question_0")
+    public WebElement question;
 
 
 
@@ -29,10 +34,11 @@ public class PollPage extends BasePage{
     public void addContact(String email){
         String emailLocator = "//div[@class='bx-finder-company-department-employee-name' and .='" + email +"']";
         Driver.get().findElement(By.xpath(emailLocator)).click();
+
     }
 
     public boolean checkIfAdded(String email){
-        String checkLocator = "//span[@class= 'feed-add-post-destination-text' and .='"+ email +"']";
+        String checkLocator = "//a[@class='feed-add-post-destination-new' and .='"+ email +"']";
 
         if(Driver.get().findElement(By.xpath(checkLocator)).isDisplayed()){
             return true;

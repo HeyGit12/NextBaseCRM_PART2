@@ -149,6 +149,16 @@ public class BrowserUtils {
         }
     }
 
+    public static boolean isElementPresent(By by) {
+        try {
+            Driver.get().findElement(by);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
+
     /**
      * Verifies whether the element matching the provided locator is displayed on page
      *
