@@ -127,6 +127,9 @@ public class CalendarPage extends BasePage {
     @FindBy(xpath = "(//span[contains(text(),'Reset')])[2]")
     public WebElement reset;
 
+    @FindBy(xpath = "//span[.='Delete']")
+    public WebElement delete;
+
     public void eventDescription(String description) {
         BrowserUtils.waitForVisibility(descriptionFrame, 10);
         Driver.get().switchTo().frame(descriptionFrame);

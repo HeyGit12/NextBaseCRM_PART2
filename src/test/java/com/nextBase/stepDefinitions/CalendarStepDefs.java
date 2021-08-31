@@ -10,9 +10,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.Color;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -36,6 +39,12 @@ public class CalendarStepDefs {
 
     @When("user clicks add")
     public void user_clicks_add() {
+        List<WebElement> allEvents = calendarPage.allEvents;
+        while(allEvents.size()>0){
+            calendarPage.eventDetails.click();
+            calendarPage.delete.click();
+            Driver.get().switchTo().alert().accept();
+        }
         calendarPage.add.click();
         BrowserUtils.waitForPageToLoad(5);
     }
@@ -216,6 +225,11 @@ public class CalendarStepDefs {
         String actual2 = calendarPage.participationStatusField.getText();
         Assert.assertEquals(expected, actual1);
         Assert.assertEquals(expected, actual2);
+    }
+    @Then("user should not be able to add event when click the SAVE button")
+    public void user_should_not_be_able_to_add_event_when_click_the_SAVE_button() {
+        calendarPage.save.click();
+        Assert.assertFalse(calendarPage.checkEvents(event_name));
     }
 
 }
