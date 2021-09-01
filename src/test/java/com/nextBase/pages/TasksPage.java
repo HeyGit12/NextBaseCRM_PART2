@@ -118,6 +118,21 @@ public class TasksPage {
     @FindBy(xpath = "//button[@data-bx-id='task-edit-submit']")
     public WebElement saveChanges;
 
+    @FindBy(css = ".menu-item-plus-icon")
+    public WebElement plusIcon;
+
+    @FindBy(css = '#tasks-popupMenuAdd')
+    public WebElement newTaskArrowIcon;
+
+    @FindBy(xpath = "//span[contains(text(),'All templates')]")
+    public WebElement allTemplates;
+    @FindBy(xpath = "//a[contains(text(),'Add')]")
+    public WebElement add;
+    @FindBy(css = ".webform-small-button-text")
+    public WebElement createTaskTemplateButton;
+
+
+
 
 
 
