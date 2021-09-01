@@ -1,5 +1,5 @@
 @NEXTBASE-309 @wip
-Feature: 
+Feature: As a user, I should be able to use "Services" functionality so that user can take advantage of company's services.
 
 	#*U.S:*
 	#

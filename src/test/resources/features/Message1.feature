@@ -1,5 +1,5 @@
 @NEXTBASE-337 @wip
-Feature: 
+Feature: As a user, I should be able to send messages by clicking on Message tab under Active Stream.
 
 	#*Us:*
 	#
