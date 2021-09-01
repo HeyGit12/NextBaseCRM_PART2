@@ -10,12 +10,15 @@ import org.openqa.selenium.support.PageFactory;
 
 public abstract class BasePage {
 
-    public BasePage() {
+    public BasePage(){
         PageFactory.initElements(Driver.get(), this);
     }
 
     @FindBy(xpath = "//a[@title='Drive']")
     public WebElement Drive;
+
+    @FindBy(xpath = "//span [contains(text(),'Tasks')]")
+    public WebElement tasksTab;
 
 
     public void navigateToModule(String tab, String module) {
