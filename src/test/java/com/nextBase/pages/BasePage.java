@@ -16,9 +16,6 @@ public abstract class BasePage {
     @FindBy(xpath = "//a[@title='Drive']")
     public WebElement Drive;
 
-
-
-
     public void navigateToModule(String tab, String module) {
         String tabLocator = "//a[@title='" + tab + "']";
         String moduleLocator = "(//span[.='" + module + "'])[1]";
@@ -39,7 +36,5 @@ public abstract class BasePage {
             BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)),  5);
         }
     }
-
-
 
 }
