@@ -38,7 +38,7 @@ public class TasksPage {
     public WebElement deadlineManager;
     @FindBy(css = ".bx-calendar-top-month")
     public WebElement deadlineMonthPicker;
-    @FindBy(css = "//span[contains(text(),'October')]")
+    @FindBy(xpath = "//span[contains(text(),'October')]")
     public WebElement deadlineMonth;
     @FindBy(xpath = "//a[@data-date='1634688000000']")
     public WebElement deadlineDay;
@@ -130,6 +130,12 @@ public class TasksPage {
     public WebElement add;
     @FindBy(css = ".webform-small-button-text")
     public WebElement createTaskTemplateButton;
+
+    @FindBy(xpath = "//a[contains(text(),'Edit')]")
+    public WebElement edit;
+
+    @FindBy(xpath = "//a[contains(@class,'task-title task-status-text')][text()='Test.hr.v.1']")
+    public WebElement createdTask;
 
 
 
