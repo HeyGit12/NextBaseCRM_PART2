@@ -1,4 +1,4 @@
-@NEXTBASE-322 @wip
+@NEXTBASE-322 @wip @ferhat
 Feature: As a user, I should be able to navigate "Calendar" page so that user can filter and search, display, add and track
   the tasks or events on "Calendar" page.
 
