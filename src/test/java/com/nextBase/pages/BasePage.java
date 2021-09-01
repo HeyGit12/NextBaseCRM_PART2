@@ -10,11 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 
 public abstract class BasePage {
 
-    public BasePage(){
+    public BasePage() {
         PageFactory.initElements(Driver.get(), this);
     }
+
     @FindBy(xpath = "//a[@title='Drive']")
     public WebElement Drive;
+
 
     public void navigateToModule(String tab, String module) {
         String tabLocator = "//a[@title='" + tab + "']";
@@ -33,8 +35,13 @@ public abstract class BasePage {
             Driver.get().findElement(By.xpath(moduleLocator)).click();
         } catch (Exception e) {
 //            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
-            BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)),  5);
+            BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)), 5);
         }
+    }
+
+    //to click Themes or Print, You can use this method
+    public void goByLinkText(String text){
+        Driver.get().findElement(By.xpath("//span[.='"+text+"']")).click();
     }
 
 }
