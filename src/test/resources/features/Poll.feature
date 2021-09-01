@@ -1,5 +1,5 @@
 @wip
-Feature: Poll activity
+Feature: As a user, I should be able to create a poll by clicking on Poll tab under Active Stream.
 
   Background:
     Given The user is on log in page
@@ -16,7 +16,7 @@ Feature: Poll activity
     Examples:
       | userType        | contact_1                      | contact_2                    |
       | Helpdesk        | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
-      | Human Resources | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
+      | human_resources | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
       | Marketing       | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
 
   @NEXTBASE-326
