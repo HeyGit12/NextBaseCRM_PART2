@@ -10,7 +10,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.w3c.dom.html.HTMLObjectElement;
 
 public class announcementStepDefs {
 
@@ -20,21 +19,21 @@ public class announcementStepDefs {
 
         Driver.get().get(ConfigurationReader.get("url"));
 
-        String username =null;
-        String password =null;
+//        String username =null;
+//        String password =null;
+//
+//        if(userType.equals("Helpdesk")){
+//            username = ConfigurationReader.get("helpdesk_username");
+//            password = ConfigurationReader.get("helpdesk_password");
+//        }else if(userType.equals("Human Resource")){
+//            username = ConfigurationReader.get("human_resources_username");
+//            password = ConfigurationReader.get("human_resources_password");
+//        }else if(userType.equals("Marketing")){
+//            username = ConfigurationReader.get("marketing_username");
+//            password = ConfigurationReader.get("marketing_password");
+//        }
 
-        if(userType.equals("Helpdesk")){
-            username = ConfigurationReader.get("helpdesk_username");
-            password = ConfigurationReader.get("helpdesk_password");
-        }else if(userType.equals("Human Resource")){
-            username = ConfigurationReader.get("human_resources_username");
-            password = ConfigurationReader.get("human_resources_password");
-        }else if(userType.equals("Marketing")){
-            username = ConfigurationReader.get("marketing_username");
-            password = ConfigurationReader.get("marketing_password");
-        }
-
-        new LoginPage().login(username,password);
+        new LoginPage().loginAs(userType);
 
     }
 

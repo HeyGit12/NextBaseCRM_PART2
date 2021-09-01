@@ -10,7 +10,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.Color;
@@ -27,7 +26,7 @@ public class CalendarStepDefs {
     @Given("User logins with {string} credentials")
     public void user_logins_with_credentials(String userType) {
         user = userType.toLowerCase();
-        new LoginPage().login(userType);
+        new LoginPage().loginAs(userType);
     }
 
 

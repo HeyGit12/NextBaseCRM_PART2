@@ -13,10 +13,6 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-
-import java.util.ArrayList;
-import java.util.Map;
 
 public class PollStepDefs {
     PollPage pollPage = new PollPage();
@@ -27,7 +23,7 @@ public class PollStepDefs {
 
     @When("the user logins as a {string}")
     public void the_user_logins_as_a(String userType) {
-        new LoginPage().loginAsA(userType);
+        new LoginPage().loginAs(userType);
     }
 
     @When("the user navigates to Poll tab")
