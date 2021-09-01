@@ -16,6 +16,9 @@ public abstract class BasePage {
     @FindBy(xpath = "//a[@title='Drive']")
     public WebElement Drive;
 
+    @FindBy(xpath = "//span [contains(text(),'Tasks')]")
+    public WebElement tasksTab;
+
 
     public void navigateToModule(String tab, String module) {
         String tabLocator = "//a[@title='" + tab + "']";
