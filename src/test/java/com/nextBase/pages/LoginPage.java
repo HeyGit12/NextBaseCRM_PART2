@@ -24,7 +24,7 @@ public class LoginPage {
     @FindBy(xpath = "//input[@class='login-btn']")
     public WebElement submit;
 
-    public void login(String userType) {
+    public void loginAsA(String userType) {
         String type=userType.toLowerCase();
         userName.sendKeys(ConfigurationReader.get(type+"_username"));
         password.sendKeys(ConfigurationReader.get("password"));
