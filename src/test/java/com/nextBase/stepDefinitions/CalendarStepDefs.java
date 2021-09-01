@@ -49,8 +49,8 @@ public class CalendarStepDefs {
         BrowserUtils.waitForPageToLoad(5);
     }
 
-    @When("enter the below event details and click Save button")
-    public void enter_the_below_event_details_and_click_Save_button(Map<String, String> data) {
+    @When("user enters the below event details")
+    public void user_enters_the_below_event_details(Map<String, String> data) {
         event_name = data.get("Event name");
         if (Boolean.parseBoolean(data.get("This event is important"))) {
             calendarPage.importance.click();
