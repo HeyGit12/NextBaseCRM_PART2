@@ -121,7 +121,7 @@ public class TasksPage {
     @FindBy(css = ".menu-item-plus-icon")
     public WebElement plusIcon;
 
-    @FindBy(css = '#tasks-popupMenuAdd')
+    @FindBy(css = "#tasks-popupMenuAdd")
     public WebElement newTaskArrowIcon;
 
     @FindBy(xpath = "//span[contains(text(),'All templates')]")
