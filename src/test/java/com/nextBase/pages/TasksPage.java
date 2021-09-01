@@ -115,6 +115,9 @@ public class TasksPage {
     @FindBy(xpath = "//span[@class='popup-window-button popup-window-button-accept']")
     public WebElement depententTaskSummit;
 
+    @FindBy(xpath = "//button[@data-bx-id='task-edit-submit']")
+    public WebElement saveChanges;
+
 
 
 
