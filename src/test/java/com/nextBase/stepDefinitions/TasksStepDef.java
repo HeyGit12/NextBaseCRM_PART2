@@ -8,6 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -31,15 +32,33 @@ public class TasksStepDef {
     @When("user enter following informations")
     public void user_enter_following_informations(Map<String,String> taskInfo) {
        TasksPage tasksPage=new TasksPage();
-
-
-       Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+switch (taskInfo.get("Action Type")){
+    case "Create":
+        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
         WebDriverWait wait=new WebDriverWait(Driver.get(),10);
         wait.until(ExpectedConditions.visibilityOf(tasksPage.thingsToDo));
-       tasksPage.thingsToDo.sendKeys(taskInfo.get("Things to do"));
-       Driver.get().switchTo().frame(tasksPage.descriptionFrame);
-       tasksPage.description.sendKeys(taskInfo.get("Description"));
-       Driver.get().switchTo().defaultContent();
+        tasksPage.thingsToDo.sendKeys(taskInfo.get("Things to do"));
+        Driver.get().switchTo().frame(tasksPage.descriptionFrame);
+        tasksPage.description.sendKeys(taskInfo.get("Description"));
+        Driver.get().switchTo().defaultContent();
+        break;
+    case "MarketingEdit":
+        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+        Driver.get().switchTo().frame(tasksPage.descriptionFrame);
+        tasksPage.description.clear();
+        tasksPage.description.sendKeys(taskInfo.get("Description"));
+        Driver.get().switchTo().defaultContent();
+        break;
+    case "CreateSubTask":
+        break;
+    case "Add":
+        break;
+    case "Template":
+        break;
+
+}
+
+
     }
 
     @When("user click High Priority check box")
@@ -99,20 +118,32 @@ public class TasksStepDef {
 
     @When("user click created task")
     public void user_click_created_task() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage=new TasksPage();
+        WebDriverWait wait=new WebDriverWait(Driver.get(),10);
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable( tasksPage.createdTaskMarketing));
+            tasksPage.createdTaskMarketing.click();
+        }catch (StaleElementReferenceException e){
+            wait.until(ExpectedConditions.elementToBeClickable( tasksPage.createdTaskMarketing));
+            tasksPage.createdTaskMarketing.click();
+        }
+
     }
 
     @When("user click EDIT")
     public void user_click_EDIT() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage=new TasksPage();
+        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+        tasksPage.edit.click();
+        Driver.get().switchTo().defaultContent();
+
     }
 
     @Then("user should be able to edit the task")
     public void user_should_be_able_to_edit_the_task() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Driver.get().switchTo().frame(new TasksPage().thingsToDoFrame);
+       Assert.assertEquals(new TasksPage().createdTaskDescription.getText(),"Testing");
+        Driver.get().switchTo().defaultContent();
     }
 
 

@@ -137,6 +137,12 @@ public class TasksPage {
     @FindBy(xpath = "//a[contains(@class,'task-title task-status-text')][text()='Test.hr.v.1']")
     public WebElement createdTask;
 
+    @FindBy(xpath = "//a[contains(@class,'task-title task-status-text')][text()='Test.v.1']")
+    public WebElement createdTaskMarketing;
+
+    @FindBy(css = "#task-detail-description")
+    public WebElement createdTaskDescription;
+
 
 
 

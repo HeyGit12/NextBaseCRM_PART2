@@ -1,6 +1,6 @@
 Feature: Tasks page functionality
 
-  @wip
+
   Scenario: HR User can create task
     Given user already logged in with "hr1@cybertekschool.com" username "UserUser" password
     When user click "Tasks" "All" under Activity stream
@@ -15,7 +15,7 @@ Feature: Tasks page functionality
     And  user click "ADD TASK" button
     Then user should be able to add new task
 
-
+  @wip
   Scenario: Marketing User can edit the task
     Given user already logged in with "marketing1@cybertekschool.com" username "UserUser" password
     When user click "Tasks" "All" under Activity stream
@@ -23,7 +23,7 @@ Feature: Tasks page functionality
     And user click EDIT
     And user enter following informations
       | Action Type  | MarketingEdit |
-      | Things to do | Test          |
+      | Description | Testing          |
     And user click "SAVE CHANGES" button
     Then user should be able to edit the task
 
