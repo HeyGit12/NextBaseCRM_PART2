@@ -22,7 +22,7 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
       | Event end date          | 08/30/2021                                                 |
       | Time zone               | (UTC +02:00) Europe/Stockholm                              |
       | Location                | Central Meeting Room                                       |
-      | Attendees               | marketing1@cybertekschool.com/helpdesk1@cybertekschool.com |
+      | Attendees               | marketing80@cybertekschool.com/helpdesk80@cybertekschool.com |
       | Event color             | Pink                                                       |
       | Availability            | Occupied                                                   |
 
