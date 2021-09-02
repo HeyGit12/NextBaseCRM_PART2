@@ -11,7 +11,7 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human_Resource |
+      | Human_Resources |
       | Marketing      |
 
 
@@ -24,7 +24,7 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human_Resource |
+      | Human_Resources |
       | Marketing      |
 
   Scenario Outline: Announcement with different accounts <userType>
@@ -36,7 +36,7 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human_Resource |
+      | Human_Resources |
       | Marketing      |
 
   Scenario Outline: Announcement with different accounts <userType>
@@ -48,7 +48,7 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human_Resource |
+      | Human_Resources |
       | Marketing      |
 
 
@@ -62,7 +62,7 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human_Resource |
+      | Human_Resources |
       | Marketing      |
 
   Scenario Outline: Announcement with different accounts <userType>
@@ -74,7 +74,7 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human_Resource |
+      | Human_Resources |
       | Marketing      |
 
   Scenario Outline: Announcement with different accounts <userType>
