@@ -1,4 +1,4 @@
-@wip
+@wip @bugra
 Feature: As a user, I should be able to create a poll by clicking on Poll tab under Active Stream.
 
   Background:
@@ -16,7 +16,7 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
     Examples:
       | userType        | contact_1                      | contact_2                    |
       | Helpdesk        | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
-      | human_resources | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
+      | Human_resources | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
       | Marketing       | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
 
   @NEXTBASE-326
@@ -30,7 +30,7 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
     Examples:
       | userType        | link                                                                                               |
       | Helpdesk        | https://www.amazon.com/Logitech-Headset-H390-Noise-Cancelling/dp/B000UXZQ42/ref=lp_16225007011_1_9 |
-      | Human Resources | https://www.amazon.com/Logitech-Headset-H390-Noise-Cancelling/dp/B000UXZQ42/ref=lp_16225007011_1_9 |
+      | Human_resources | https://www.amazon.com/Logitech-Headset-H390-Noise-Cancelling/dp/B000UXZQ42/ref=lp_16225007011_1_9 |
       | Marketing       | https://www.amazon.com/Logitech-Headset-H390-Noise-Cancelling/dp/B000UXZQ42/ref=lp_16225007011_1_9 |
 
   @NEXTBASE-327
@@ -44,7 +44,7 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
     Examples:
       | userType        | email                          |
       | Helpdesk        | marketing84@cybertekschool.com |
-      | Human Resources | marketing84@cybertekschool.com |
+      | Human_resources | marketing84@cybertekschool.com |
       | Marketing       | marketing84@cybertekschool.com |
 
   @NEXTBASE-328
@@ -57,7 +57,7 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
     Examples:
       | userType        |
       | Helpdesk        |
-      | Human Resources |
+      | Human_resources |
       | Marketing       |
 
   @NEXTBASE-329
@@ -71,7 +71,7 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
     Examples:
       | userType        |
       | Helpdesk        |
-      | Human Resources |
+      | Human_resources |
       | Marketing       |
 
   @NEXTBASE-330 @NEXTBASE-331
@@ -87,5 +87,5 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
     Examples:
       | userType        | Question   | Answer1   | Answer2   |
       | Helpdesk        | exQuestion | exAnswer1 | exAnswer2 |
-      | Human Resources | exQuestion | exAnswer1 | exAnswer2 |
+      | Human_resources | exQuestion | exAnswer1 | exAnswer2 |
       | Marketing       | exQuestion | exAnswer1 | exAnswer2 |
