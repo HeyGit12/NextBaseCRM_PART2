@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class ListsPage extends BasePage{
 
-    @FindBy (css = "workarea-content")
+    @FindBy (id = "workarea-content")
     public WebElement listsWorkArea;
 
 }

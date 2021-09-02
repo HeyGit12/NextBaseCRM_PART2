@@ -28,12 +28,12 @@ public class ServicesStepDefs {
 
             case "helpdesk":
                 username = ConfigurationReader.get("helpdesk_username");
-                password = ConfigurationReader.get("password");
+                password = ConfigurationReader.get("helpdesk_password");
                 break;
 
             case "human resources":
                 username = ConfigurationReader.get("hr_username");
-                password = ConfigurationReader.get("password");
+                password = ConfigurationReader.get("hr_password");
                 break;
 
             case "marketing":
