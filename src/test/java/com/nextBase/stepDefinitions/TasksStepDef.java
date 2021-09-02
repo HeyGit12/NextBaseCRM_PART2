@@ -2,16 +2,21 @@ package com.nextBase.stepDefinitions;
 
 import com.nextBase.pages.HomePage;
 import com.nextBase.pages.TasksPage;
+import com.nextBase.utilities.BrowserUtils;
 import com.nextBase.utilities.ConfigurationReader;
 import com.nextBase.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.*;
 import java.util.Map;
 
 public class TasksStepDef {
@@ -19,51 +24,69 @@ public class TasksStepDef {
 
     @When("user click {string} {string} under Activity stream")
     public void user_click_under_Activity_stream(String tab, String module) {
-        HomePage homePage=new HomePage();
-        homePage.navigateToModule(tab,module);
+        HomePage homePage = new HomePage();
+        homePage.navigateToModule(tab, module);
 
     }
 
     @When("user click NEW TASK button")
     public void user_click_NEW_TASK_button() {
-      new TasksPage().newTaskButton.click();
+        new TasksPage().newTaskButton.click();
     }
 
     @When("user enter following informations")
-    public void user_enter_following_informations(Map<String,String> taskInfo) {
-       TasksPage tasksPage=new TasksPage();
-switch (taskInfo.get("Action Type")){
-    case "Create":
-        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
-        WebDriverWait wait=new WebDriverWait(Driver.get(),10);
-        wait.until(ExpectedConditions.visibilityOf(tasksPage.thingsToDo));
-        tasksPage.thingsToDo.sendKeys(taskInfo.get("Things to do"));
-        Driver.get().switchTo().frame(tasksPage.descriptionFrame);
-        tasksPage.description.sendKeys(taskInfo.get("Description"));
-        Driver.get().switchTo().defaultContent();
-        break;
-    case "MarketingEdit":
-        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
-        Driver.get().switchTo().frame(tasksPage.descriptionFrame);
-        tasksPage.description.clear();
-        tasksPage.description.sendKeys(taskInfo.get("Description"));
-        Driver.get().switchTo().defaultContent();
-        break;
-    case "CreateSubTask":
-        break;
-    case "Add":
-        break;
-    case "Template":
-        break;
+    public void user_enter_following_informations(Map<String, String> taskInfo) {
+        TasksPage tasksPage = new TasksPage();
+        switch (taskInfo.get("Action Type")) {
+            case "Create":
+                Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+                WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
+                wait.until(ExpectedConditions.visibilityOf(tasksPage.thingsToDo));
 
-}
+                tasksPage.thingsToDo.sendKeys(taskInfo.get("Things to do"));
+                Driver.get().switchTo().frame(tasksPage.descriptionFrame);
+                tasksPage.description.sendKeys(taskInfo.get("Description"));
+                Driver.get().switchTo().defaultContent();
+                break;
+            case "MarketingEdit":
+                Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+                Driver.get().switchTo().frame(tasksPage.descriptionFrame);
+                tasksPage.description.clear();
+                tasksPage.description.sendKeys(taskInfo.get("Description"));
+                Driver.get().switchTo().defaultContent();
+                break;
+
+            case "Add":
+                Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+               Driver.get().switchTo().frame(tasksPage.descriptionFrame);
+               tasksPage.description.clear();
+               tasksPage.description.sendKeys(taskInfo.get("Description"));
+                Driver.get().switchTo().defaultContent();
+                Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+                tasksPage.checklist.click();
+                tasksPage.writeChecklist.sendKeys("test");
+                tasksPage.summitChecklist.click();
+                tasksPage.paticipants.click();
+                BrowserUtils.scrollToElement(tasksPage.addParticipant);
+                tasksPage.addParticipant.click();
+                tasksPage.writeParticipants.sendKeys(taskInfo.get("Participants"),Keys.ENTER);
+
+                tasksPage.observers.click();
+                tasksPage.addObservers.click();
+                tasksPage.writeObservers.sendKeys(taskInfo.get("Observers"),Keys.ENTER);
+                Driver.get().switchTo().defaultContent();
+                break;
+            case "Template":
+                break;
+
+        }
 
 
     }
 
     @When("user click High Priority check box")
     public void user_click_High_Priority_check_box() {
-        TasksPage tasksPage=new TasksPage();
+        TasksPage tasksPage = new TasksPage();
         Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
         tasksPage.highPriorityCB.click();
         Driver.get().switchTo().defaultContent();
@@ -71,14 +94,14 @@ switch (taskInfo.get("Action Type")){
 
     @When("user enter deadline")
     public void user_enter_deadline() {
-        TasksPage tasksPage=new TasksPage();
+        TasksPage tasksPage = new TasksPage();
         Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
         tasksPage.deadlineManager.click();
         tasksPage.deadlineMonthPicker.click();
         tasksPage.deadlineMonth.click();
-        try{
+        try {
             tasksPage.deadlineDay.click();
-        }catch (ElementClickInterceptedException e){
+        } catch (ElementClickInterceptedException e) {
             tasksPage.deadlineDay.click();
         }
 
@@ -93,7 +116,7 @@ switch (taskInfo.get("Action Type")){
 
     @When("user Add mention")
     public void user_Add_mention() {
-        TasksPage tasksPage=new TasksPage();
+        TasksPage tasksPage = new TasksPage();
         Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
         tasksPage.addMention.click();
         tasksPage.mentionPerson.click();
@@ -103,7 +126,7 @@ switch (taskInfo.get("Action Type")){
 
     @When("user click {string} button")
     public void user_click_button(String string) {
-        TasksPage tasksPage=new TasksPage();
+        TasksPage tasksPage = new TasksPage();
         Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
         tasksPage.saveChanges.click();
         Driver.get().switchTo().defaultContent();
@@ -118,13 +141,13 @@ switch (taskInfo.get("Action Type")){
 
     @When("user click created task")
     public void user_click_created_task() {
-        TasksPage tasksPage=new TasksPage();
-        WebDriverWait wait=new WebDriverWait(Driver.get(),10);
+        TasksPage tasksPage = new TasksPage();
+        WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
         try {
-            wait.until(ExpectedConditions.elementToBeClickable( tasksPage.createdTaskMarketing));
+            wait.until(ExpectedConditions.elementToBeClickable(tasksPage.createdTaskMarketing));
             tasksPage.createdTaskMarketing.click();
-        }catch (StaleElementReferenceException e){
-            wait.until(ExpectedConditions.elementToBeClickable( tasksPage.createdTaskMarketing));
+        } catch (StaleElementReferenceException e) {
+            wait.until(ExpectedConditions.elementToBeClickable(tasksPage.createdTaskMarketing));
             tasksPage.createdTaskMarketing.click();
         }
 
@@ -132,7 +155,7 @@ switch (taskInfo.get("Action Type")){
 
     @When("user click EDIT")
     public void user_click_EDIT() {
-        TasksPage tasksPage=new TasksPage();
+        TasksPage tasksPage = new TasksPage();
         Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
         tasksPage.edit.click();
         Driver.get().switchTo().defaultContent();
@@ -142,77 +165,143 @@ switch (taskInfo.get("Action Type")){
     @Then("user should be able to edit the task")
     public void user_should_be_able_to_edit_the_task() {
         Driver.get().switchTo().frame(new TasksPage().thingsToDoFrame);
-       Assert.assertEquals(new TasksPage().createdTaskDescription.getText(),"Testing");
+        Assert.assertEquals(new TasksPage().createdTaskDescription.getText(), "Testing");
+        Driver.get().switchTo().defaultContent();
+    }
+
+    @When("user change responsible person;")
+    public void user_change_responsible_person() {
+        TasksPage tasksPage = new TasksPage();
+        Driver.get().switchTo().frame(new TasksPage().thingsToDoFrame);
+        tasksPage.responsiblePersonChange.click();
+        tasksPage.resposiblePersonWrite.sendKeys("alper@cybertekschool.com");
+        //tasksPage.responsiblePersonOk.click();
         Driver.get().switchTo().defaultContent();
     }
 
 
     @When("user click More")
     public void user_click_More() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+        tasksPage.moreButton.click();
+        Driver.get().switchTo().defaultContent();
+    }
+
+    @When("hr user click created task")
+    public void hr_user_click_created_task() {
+        TasksPage tasksPage = new TasksPage();
+        WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(tasksPage.createdTask));
+            tasksPage.createdTask.click();
+        } catch (StaleElementReferenceException e) {
+            wait.until(ExpectedConditions.elementToBeClickable(tasksPage.createdTask));
+            tasksPage.createdTask.click();
+        }
+
     }
 
     @When("user add Time tracking")
     public void user_add_Time_tracking() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+        JavascriptExecutor js = ((JavascriptExecutor) Driver.get());
+        js.executeScript("arguments[0].scrollIntoView(true);",tasksPage.timeTrackingCB);
+        tasksPage.timeTrackingCB.click();
+        tasksPage.timeTrackingHour.clear();
+        tasksPage.timeTrackingHour.sendKeys("2");
+        tasksPage.timeTrackingMinute.clear();
+        tasksPage.timeTrackingMinute.sendKeys("30");
+        Driver.get().switchTo().defaultContent();
+
     }
 
     @When("user add reminder")
     public void user_add_reminder() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+        tasksPage.reminderModule.click();
+        tasksPage.selectReminderType.click();
+        tasksPage.reminderType.click();
+
+        tasksPage.reminderWithEmail.click();
+        tasksPage.reminderSummit.click();
+        Driver.get().switchTo().defaultContent();
+
     }
 
     @When("user add Dependent tasks")
     public void user_add_Dependent_tasks() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+        JavascriptExecutor js = ((JavascriptExecutor) Driver.get());
+        js.executeScript("arguments[0].scrollIntoView(true);",tasksPage.dependentTaskAdd);
+        tasksPage.dependentTaskAdd.click();
+        tasksPage.dependentTask.click();
+        tasksPage.depententTaskSummit.click();
+        Driver.get().switchTo().defaultContent();
+
     }
 
     @Then("user can see edited following informations")
-    public void user_can_see_edited_following_informations(io.cucumber.datatable.DataTable dataTable) {
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-        // Double, Byte, Short, Long, BigInteger or BigDecimal.
-        //
-        // For other transformations you can register a DataTableType.
-        throw new io.cucumber.java.PendingException();
+    public void user_can_see_edited_following_informations(Map<String, String> taskInfo) {
+        TasksPage tasksPage = new TasksPage();
+        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+        Assert.assertTrue(tasksPage.reminderCheck.getText().contains("to responsible person"));
+        Assert.assertTrue(tasksPage.estimateTime.getText().contains(taskInfo.get("Estimate")));
+        Assert.assertEquals(tasksPage.dependentTaskCheck.getText(), taskInfo.get("Dependent tasks"));
+        Driver.get().switchTo().defaultContent();
     }
 
 
     @When("user click plus icon")
     public void user_click_plus_icon() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        new Actions(Driver.get()).moveToElement(tasksPage.tasksTab).build().perform();
+        tasksPage.plusIcon.click();
+
     }
 
     @When("user add subtask")
     public void user_add_subtask() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+        BrowserUtils.scrollToElement(tasksPage.subtaskAdd);
+        tasksPage.subtaskAdd.click();
+        tasksPage.subtask.click();
+        tasksPage.subtaskSummit.click();
+        Driver.get().switchTo().defaultContent();
+
     }
 
     @When("user add Tags")
     public void user_add_Tags() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+        BrowserUtils.scrollToElement(tasksPage.tagsAdd);
+        tasksPage.tagsAdd.click();
+        tasksPage.tagsWrite.sendKeys("Testing");
+        tasksPage.tagsSummit.click();
+        Driver.get().switchTo().defaultContent();
     }
 
     @Then("user should be ableto create subtask")
     public void user_should_be_ableto_create_subtask() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        Assert.assertTrue(tasksPage.subTaskCheck.isDisplayed());
     }
 
 
     @Then("user should be add informations")
     public void user_should_be_add_informations() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+        Assert.assertTrue(tasksPage.descriptionCheck.getText().contains("checklist tested"));
+        Assert.assertTrue(tasksPage.participantCheck.getText().contains("hr1@cybertekschool.com"));
+        Assert.assertTrue(tasksPage.observersCheck.getText().contains("helpdesk1@cybertekschool.com"));
+        Driver.get().switchTo().defaultContent();
+
     }
 
 
@@ -257,6 +346,7 @@ switch (taskInfo.get("Action Type")){
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+
     @When("user click tasks check box")
     public void user_click_tasks_check_box() {
         // Write code here that turns the phrase above into concrete actions
@@ -286,7 +376,6 @@ switch (taskInfo.get("Action Type")){
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
 
 
 }
