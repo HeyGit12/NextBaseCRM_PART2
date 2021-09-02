@@ -19,51 +19,51 @@ public class TasksStepDef {
 
     @When("user click {string} {string} under Activity stream")
     public void user_click_under_Activity_stream(String tab, String module) {
-        HomePage homePage=new HomePage();
-        homePage.navigateToModule(tab,module);
+        HomePage homePage = new HomePage();
+        homePage.navigateToModule(tab, module);
 
     }
 
     @When("user click NEW TASK button")
     public void user_click_NEW_TASK_button() {
-      new TasksPage().newTaskButton.click();
+        new TasksPage().newTaskButton.click();
     }
 
     @When("user enter following informations")
-    public void user_enter_following_informations(Map<String,String> taskInfo) {
-       TasksPage tasksPage=new TasksPage();
-switch (taskInfo.get("Action Type")){
-    case "Create":
-        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
-        WebDriverWait wait=new WebDriverWait(Driver.get(),10);
-        wait.until(ExpectedConditions.visibilityOf(tasksPage.thingsToDo));
-        tasksPage.thingsToDo.sendKeys(taskInfo.get("Things to do"));
-        Driver.get().switchTo().frame(tasksPage.descriptionFrame);
-        tasksPage.description.sendKeys(taskInfo.get("Description"));
-        Driver.get().switchTo().defaultContent();
-        break;
-    case "MarketingEdit":
-        Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
-        Driver.get().switchTo().frame(tasksPage.descriptionFrame);
-        tasksPage.description.clear();
-        tasksPage.description.sendKeys(taskInfo.get("Description"));
-        Driver.get().switchTo().defaultContent();
-        break;
-    case "CreateSubTask":
-        break;
-    case "Add":
-        break;
-    case "Template":
-        break;
+    public void user_enter_following_informations(Map<String, String> taskInfo) {
+        TasksPage tasksPage = new TasksPage();
+        switch (taskInfo.get("Action Type")) {
+            case "Create":
+                Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+                WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
+                wait.until(ExpectedConditions.visibilityOf(tasksPage.thingsToDo));
+                tasksPage.thingsToDo.sendKeys(taskInfo.get("Things to do"));
+                Driver.get().switchTo().frame(tasksPage.descriptionFrame);
+                tasksPage.description.sendKeys(taskInfo.get("Description"));
+                Driver.get().switchTo().defaultContent();
+                break;
+            case "MarketingEdit":
+                Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
+                Driver.get().switchTo().frame(tasksPage.descriptionFrame);
+                tasksPage.description.clear();
+                tasksPage.description.sendKeys(taskInfo.get("Description"));
+                Driver.get().switchTo().defaultContent();
+                break;
+            case "CreateSubTask":
+                break;
+            case "Add":
+                break;
+            case "Template":
+                break;
 
-}
+        }
 
 
     }
 
     @When("user click High Priority check box")
     public void user_click_High_Priority_check_box() {
-        TasksPage tasksPage=new TasksPage();
+        TasksPage tasksPage = new TasksPage();
         Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
         tasksPage.highPriorityCB.click();
         Driver.get().switchTo().defaultContent();
@@ -71,14 +71,14 @@ switch (taskInfo.get("Action Type")){
 
     @When("user enter deadline")
     public void user_enter_deadline() {
-        TasksPage tasksPage=new TasksPage();
+        TasksPage tasksPage = new TasksPage();
         Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
         tasksPage.deadlineManager.click();
         tasksPage.deadlineMonthPicker.click();
         tasksPage.deadlineMonth.click();
-        try{
+        try {
             tasksPage.deadlineDay.click();
-        }catch (ElementClickInterceptedException e){
+        } catch (ElementClickInterceptedException e) {
             tasksPage.deadlineDay.click();
         }
 
@@ -93,7 +93,7 @@ switch (taskInfo.get("Action Type")){
 
     @When("user Add mention")
     public void user_Add_mention() {
-        TasksPage tasksPage=new TasksPage();
+        TasksPage tasksPage = new TasksPage();
         Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
         tasksPage.addMention.click();
         tasksPage.mentionPerson.click();
@@ -103,7 +103,7 @@ switch (taskInfo.get("Action Type")){
 
     @When("user click {string} button")
     public void user_click_button(String string) {
-        TasksPage tasksPage=new TasksPage();
+        TasksPage tasksPage = new TasksPage();
         Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
         tasksPage.saveChanges.click();
         Driver.get().switchTo().defaultContent();
@@ -118,13 +118,13 @@ switch (taskInfo.get("Action Type")){
 
     @When("user click created task")
     public void user_click_created_task() {
-        TasksPage tasksPage=new TasksPage();
-        WebDriverWait wait=new WebDriverWait(Driver.get(),10);
+        TasksPage tasksPage = new TasksPage();
+        WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
         try {
-            wait.until(ExpectedConditions.elementToBeClickable( tasksPage.createdTaskMarketing));
+            wait.until(ExpectedConditions.elementToBeClickable(tasksPage.createdTaskMarketing));
             tasksPage.createdTaskMarketing.click();
-        }catch (StaleElementReferenceException e){
-            wait.until(ExpectedConditions.elementToBeClickable( tasksPage.createdTaskMarketing));
+        } catch (StaleElementReferenceException e) {
+            wait.until(ExpectedConditions.elementToBeClickable(tasksPage.createdTaskMarketing));
             tasksPage.createdTaskMarketing.click();
         }
 
@@ -132,7 +132,7 @@ switch (taskInfo.get("Action Type")){
 
     @When("user click EDIT")
     public void user_click_EDIT() {
-        TasksPage tasksPage=new TasksPage();
+        TasksPage tasksPage = new TasksPage();
         Driver.get().switchTo().frame(tasksPage.thingsToDoFrame);
         tasksPage.edit.click();
         Driver.get().switchTo().defaultContent();
@@ -142,7 +142,7 @@ switch (taskInfo.get("Action Type")){
     @Then("user should be able to edit the task")
     public void user_should_be_able_to_edit_the_task() {
         Driver.get().switchTo().frame(new TasksPage().thingsToDoFrame);
-       Assert.assertEquals(new TasksPage().createdTaskDescription.getText(),"Testing");
+        Assert.assertEquals(new TasksPage().createdTaskDescription.getText(), "Testing");
         Driver.get().switchTo().defaultContent();
     }
 
@@ -257,6 +257,7 @@ switch (taskInfo.get("Action Type")){
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+
     @When("user click tasks check box")
     public void user_click_tasks_check_box() {
         // Write code here that turns the phrase above into concrete actions
@@ -286,7 +287,6 @@ switch (taskInfo.get("Action Type")){
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
 
 
 }

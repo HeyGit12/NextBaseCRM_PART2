@@ -90,7 +90,7 @@ public class CalendarStepDefs {
 
     @When("user clicks event and selects edit")
     public void user_clicks_event_and_selects_edit() {
-       // actions.doubleClick(calendarPage.eventDetails).perform();        // ****DOUBLE CLICK****
+        // actions.doubleClick(calendarPage.eventDetails).perform();        // ****DOUBLE CLICK****
         calendarPage.schedule.click();
         calendarPage.eventDetails.click();
         calendarPage.editEvent.click();
