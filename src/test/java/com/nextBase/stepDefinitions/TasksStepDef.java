@@ -77,6 +77,12 @@ public class TasksStepDef {
                 Driver.get().switchTo().defaultContent();
                 break;
             case "Template":
+                tasksPage.thingsToDoTaskTemplate.sendKeys(taskInfo.get("Things to do"));
+                Driver.get().switchTo().frame(tasksPage.descriptionFrame);
+                tasksPage.description.sendKeys(taskInfo.get("Description"));
+                Driver.get().switchTo().defaultContent();
+                tasksPage.deadlineIn.sendKeys(taskInfo.get("Deadline in"));
+
                 break;
 
         }
@@ -307,44 +313,71 @@ public class TasksStepDef {
 
     @When("user open New task module")
     public void user_open_New_task_module() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        tasksPage.newTaskArrowIcon.click();
+
     }
 
     @When("user click All templates")
     public void user_click_All_templates() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        tasksPage.allTemplates.click();
     }
 
     @When("user click ADD")
     public void user_click_ADD() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        tasksPage.add.click();
     }
 
-    @Then("user must be on {string} page")
+    @When("user must be on {string} page")
     public void user_must_be_on_page(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        Assert.assertTrue(tasksPage.newTaskTemplatePageCheck.getText().contains("New task template"));
+    }
+    @When("user click to High Priority check box")
+    public void user_click_to_High_Priority_check_box() {
+        TasksPage tasksPage = new TasksPage();
+        tasksPage.highPriorityCB.click();
+    }
+    @When("user click to Add mention")
+    public void user_click_to_Add_mention() {
+        TasksPage tasksPage = new TasksPage();
+        tasksPage.addMentionTaskTemplate.click();
+        tasksPage.mentionPerson.click();
+    }
+    @When("user click Add mention")
+    public void user_click_Add_mention() {
+        TasksPage tasksPage = new TasksPage();
+        tasksPage.addMention.click();
+        tasksPage.mentionPerson.click();
     }
 
     @When("user click Options")
     public void user_click_Options() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        tasksPage.options.click();
     }
 
     @When("user click Responsible person can change deadline check box and Approve task when completed check box")
     public void user_click_Responsible_person_can_change_deadline_check_box_and_Approve_task_when_completed_check_box() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        BrowserUtils.scrollToElement(tasksPage.responsiblePChangeDeadline);
+        tasksPage.responsiblePChangeDeadline.click();
     }
+
+    @When("user click CREATE TEST TEMPLATE  button")
+    public void user_click_CREATE_TEST_TEMPLATE_button() {
+        TasksPage tasksPage = new TasksPage();
+        tasksPage.createTaskTemplateButton.click();
+    }
+
+
 
     @Then("user must be create new task template")
     public void user_must_be_create_new_task_template() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        TasksPage tasksPage = new TasksPage();
+        Assert.assertTrue(tasksPage.taskTemplateCheck.getText().contains("Test.h"));
     }
 
     @When("user click tasks check box")

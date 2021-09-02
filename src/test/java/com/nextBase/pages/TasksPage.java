@@ -19,10 +19,14 @@ public class TasksPage extends BasePage {
 
     @FindBy(xpath = "//input[@data-bx-id='task-edit-title']")
     public WebElement thingsToDo;
+    @FindBy(css = ".js-id-task-template-edit-title")
+    public WebElement thingsToDoTaskTemplate;
 
 
     @FindBy(css = ".bx-editor-iframe")
     public WebElement descriptionFrame;
+
+
 
     @FindBy(xpath = "//body")
     public WebElement description;
@@ -33,6 +37,8 @@ public class TasksPage extends BasePage {
     public WebElement addMention;
     @FindBy(xpath = "//div[contains(text(),'marketing1@cybertekschool.com')]")
     public WebElement mentionPerson;
+    @FindBy(css = "#bx-b-mention-task-form-bitrix_tasks_task_template_default_1")
+    public WebElement addMentionTaskTemplate;
 
     @FindBy(css = "#tasks-task-priority-cb")
     public WebElement highPriorityCB;
@@ -51,6 +57,8 @@ public class TasksPage extends BasePage {
     public WebElement deadlineMinute;
     @FindBy(css = ".bx-calendar-button-text")
     public WebElement deadlineSelectButton;
+    @FindBy(css = ".js-id-dateplanmanager-display.task-options-inp")
+    public WebElement deadlineIn;
 
     @FindBy(css = "//a[contains(text(),'Add more')]")
     public WebElement addMoreResponsiblePerson;
@@ -149,6 +157,8 @@ public class TasksPage extends BasePage {
     public WebElement allTemplates;
     @FindBy(xpath = "//a[contains(text(),'Add')]")
     public WebElement add;
+    @FindBy(css = "#pagetitle")
+    public WebElement newTaskTemplatePageCheck;
     @FindBy(css = ".webform-small-button-text")
     public WebElement createTaskTemplateButton;
 
@@ -163,6 +173,15 @@ public class TasksPage extends BasePage {
 
     @FindBy(css = "#task-detail-description")
     public WebElement createdTaskDescription;
+
+    @FindBy(xpath = "//span[@data-target='options']")
+    public WebElement options;
+
+    @FindBy(xpath = "//input[@data-target='allow-change-deadline']")
+    public WebElement responsiblePChangeDeadline;
+
+    @FindBy(css = "#pagetitle")
+    public WebElement taskTemplateCheck;
 
 
 
