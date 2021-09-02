@@ -27,7 +27,7 @@ public class LoginPage {
     public void loginAs(String userType) {
         String type=userType.toLowerCase();
         userName.sendKeys(ConfigurationReader.get(type+"_username"));
-        password.sendKeys(ConfigurationReader.get("password"));
+        password.sendKeys(ConfigurationReader.get(type+"password"));
         submit.click();
     }
 
