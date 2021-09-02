@@ -19,21 +19,7 @@ public class announcementStepDefs {
 
         Driver.get().get(ConfigurationReader.get("url"));
 
-        String username =null;
-        String password =null;
-
-        if(userType.equals("Helpdesk")){
-            username = ConfigurationReader.get("helpdesk_username");
-            password = ConfigurationReader.get("helpdesk_password");
-        }else if(userType.equals("Human Resource")){
-            username = ConfigurationReader.get("human_resources_username");
-            password = ConfigurationReader.get("human_resources_password");
-        }else if(userType.equals("Marketing")){
-            username = ConfigurationReader.get("marketing_username");
-            password = ConfigurationReader.get("marketing_password");
-        }
-
-        new LoginPage().loginAs(userType);
+        new LoginPage().loginAsA(userType);
 
     }
 
@@ -222,8 +208,14 @@ public class announcementStepDefs {
     @Then("the user should be able to see announcement is posted")
     public void the_user_should_be_able_to_see_announcement_is_posted() {
 
-        BrowserUtils.waitFor(3);
-        Assert.assertTrue(new HomePage().iHaveReadThis.isDisplayed());
+        BrowserUtils.waitFor(2);
+        new HomePage().moreBtn.click();
+        new HomePage().announcementBtn.click();
+        Driver.get().switchTo().frame(0);
+        String body = Driver.get().findElement(By.cssSelector("body")).getText();
+        Assert.assertTrue(body.isEmpty());
+
+
     }
 
 

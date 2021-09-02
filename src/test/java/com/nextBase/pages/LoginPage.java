@@ -10,8 +10,8 @@ public class LoginPage {
 
 
     public LoginPage(){
-    PageFactory.initElements(Driver.get(), this);
-}
+        PageFactory.initElements(Driver.get(), this);
+    }
 
     @FindBy(xpath="//input[@name='USER_LOGIN']")
     public WebElement userName;
@@ -44,7 +44,7 @@ public class LoginPage {
         if (userType.equals("Helpdesk")) {
             username = ConfigurationReader.get("helpdesk_username");
             password = ConfigurationReader.get("helpdesk_password");
-        } else if (userType.equals("Human Resources")) {
+        } else if (userType.equals("Human_Resources")) {
             username = ConfigurationReader.get("human_resources_username");
             password = ConfigurationReader.get("human_resources_password");
         } else if (userType.equals("Marketing")) {

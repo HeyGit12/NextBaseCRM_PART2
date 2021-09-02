@@ -1,4 +1,5 @@
-@wip
+
+@wip1
 Feature: Announcement function from "More"
 
 
@@ -86,10 +87,10 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human_Resource |
+      | Human_Resources |
       | Marketing      |
 
-  @wip
+  @wip2
   Scenario Outline: Announcement with different accounts <userType>
     Given the user logged in as "<userType>"
     When the user opens Announcement panel
@@ -99,5 +100,5 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human_Resource |
+      | Human_Resources |
       | Marketing      |
