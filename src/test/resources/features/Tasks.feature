@@ -103,7 +103,7 @@ Feature: Tasks page functionality
     And user click CONTINUE
     Then user should be able to delete task
 
-  @wip
+
     Scenario: HR User can add one more responsible person
       Given user already logged in with "hr1@cybertekschool.com" username "UserUser" password
       When user click "Tasks" "All" under Activity stream
