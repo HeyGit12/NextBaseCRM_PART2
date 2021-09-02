@@ -25,7 +25,6 @@ public class HomePage extends BasePage {
         Driver.get().findElement(By.xpath("//span[@class='main-buttons-item-text-title' and contains(text(), '"+tab+"')]")).click();
     }
 
-
     @FindBy(xpath = "//*[@id=\"user-name\"]")
     public WebElement profilName;
 
