@@ -1,6 +1,21 @@
+@NEXTBASE-351
 Feature: Announcement function from "More"
 
+  #*{color:#ff0000}User Story:
+	#{color}*{color:#172b4d}As a user, I should be able to send annoucement from Annoucement subheadding from "More" under Activity Stream.{color}*{color:#ff0000}
+	#
+	#Acceptance Criteria:{color}*
+	#
+	#*1. User should be able to click on upload files icon to upload files and pictures from local disks.*
+	# 2. User should be able to add users from selecting multiple contacts from Employees and Departments contact lists.
+	# 3. User should be able to attach link by clicking on the link icon.
+	# 4. User should be able to insert videos by clicking on the video icon and entering the video URL.
+	# 5. User should be able to create a quote by clicking on the Comma icon.
+	# 6. User should be able to add mention by clicking on the Add mention icon.
+	# 7. User should be able to send announcement.
 
+	#Scenario: Verify that user should be able to click on upload files icon to upload files and pictures from local disks.
+  @NEXTBASE-343
   Scenario Outline: Announcement with different accounts <userType>
     Given the user logged in as "<userType>"
     When the user opens Announcement panel
@@ -10,10 +25,24 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human Resource |
+      | Human_Resources |
       | Marketing      |
 
+#*{color:#de350b}User Story:{color}*
+	#As a user, I should be able to send annoucement from Annoucement subheadding from "More" under Activity Stream.
+	#
+	#{color:#de350b} *Acceptance Criteria:*{color}
+	#
+	#1. User should be able to click on upload files icon to upload files and pictures from local disks.
+	# *2. User should be able to add users from selecting multiple contacts from Employees and Departments contact lists.*
+	# 3. User should be able to attach link by clicking on the link icon.
+	# 4. User should be able to insert videos by clicking on the video icon and entering the video URL.
+	# 5. User should be able to create a quote by clicking on the Comma icon.
+	# 6. User should be able to add mention by clicking on the Add mention icon.
+	# 7. User should be able to send announcement.
 
+  #Scenario: Verify that user should be able to add users from selecting multiple contacts from Employees and Departments contact lists.
+  @NEXTBASE-344
   Scenario Outline: Announcement with different accounts <userType>
     Given the user logged in as "<userType>"
     When the user opens Announcement panel
@@ -23,9 +52,24 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human Resource |
+      | Human_Resources |
       | Marketing      |
 
+    #*{color:#de350b}User Story:{color}*
+	#As a user, I should be able to send annoucement from Annoucement subheadding from "More" under Activity Stream.
+	#
+	#{color:#de350b} *Acceptance Criteria:*{color}
+	#
+	#1. User should be able to click on upload files icon to upload files and pictures from local disks.
+	# 2. User should be able to add users from selecting multiple contacts from Employees and Departments contact lists.
+	# *3. User should be able to attach link by clicking on the link icon.*
+	# 4. User should be able to insert videos by clicking on the video icon and entering the video URL.
+	# 5. User should be able to create a quote by clicking on the Comma icon.
+	# 6. User should be able to add mention by clicking on the Add mention icon.
+	# 7. User should be able to send announcement.
+
+  #Scenario: Verify that user should be able to attach link by clicking on the link icon.
+  @NEXTBASE-345
   Scenario Outline: Announcement with different accounts <userType>
     Given the user logged in as "<userType>"
     When the user opens Announcement panel
@@ -35,22 +79,26 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human Resource |
-      | Marketing      |
-
-  Scenario Outline: Announcement with different accounts <userType>
-    Given the user logged in as "<userType>"
-    When the user opens Announcement panel
-    And the user adds multiple users by selecting
-    Then the user should be able to see users are added
-
-    Examples:
-      | userType       |
-      | Helpdesk       |
-      | Human Resource |
+      | Human_Resources |
       | Marketing      |
 
 
+
+#*{color:#de350b}User Story:{color}*
+	#As a user, I should be able to send annoucement from Annoucement subheadding from "More" under Activity Stream.
+	#
+	#{color:#de350b} *Acceptance Criteria:*{color}
+	#
+	#1. User should be able to click on upload files icon to upload files and pictures from local disks.
+	# 2. User should be able to add users from selecting multiple contacts from Employees and Departments contact lists.
+	# 3. User should be able to attach link by clicking on the link icon.
+	# *4. User should be able to insert videos by clicking on the video icon and entering the video URL.*
+	# 5. User should be able to create a quote by clicking on the Comma icon.
+	# 6. User should be able to add mention by clicking on the Add mention icon.
+	# 7. User should be able to send announcement.
+
+  #Scenario: Verify that user should be able to insert videos by clicking on the video icon and entering the video URL.
+  @NEXTBASE-346
   Scenario Outline: Announcement with different accounts <userType>
     Given the user logged in as "<userType>"
     When the user opens Announcement panel
@@ -61,9 +109,24 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human Resource |
+      | Human_Resources |
       | Marketing      |
 
+    #*{color:#de350b}User Story:{color}*
+	#As a user, I should be able to send annoucement from Annoucement subheadding from "More" under Activity Stream.
+	#
+	#{color:#de350b} *Acceptance Criteria:*{color}
+	#
+	#1. User should be able to click on upload files icon to upload files and pictures from local disks.
+	# 2. User should be able to add users from selecting multiple contacts from Employees and Departments contact lists.
+	# 3. User should be able to attach link by clicking on the link icon.
+	# 4. User should be able to insert videos by clicking on the video icon and entering the video URL.
+	# *5. User should be able to create a quote by clicking on the Comma icon.*
+	# 6. User should be able to add mention by clicking on the Add mention icon.
+	# 7. User should be able to send announcement.
+
+  #Scenario: Verify that User should be able to create a quote by clicking on the Comma icon.
+  @NEXTBASE-347
   Scenario Outline: Announcement with different accounts <userType>
     Given the user logged in as "<userType>"
     When the user opens Announcement panel
@@ -73,9 +136,25 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human Resource |
+      | Human_Resources |
       | Marketing      |
 
+
+    #*{color:#de350b}User Story:{color}*
+	#As a user, I should be able to send annoucement from Annoucement subheadding from "More" under Activity Stream.
+	#
+	#{color:#de350b} *Acceptance Criteria:*{color}
+	#
+	#1. User should be able to click on upload files icon to upload files and pictures from local disks.
+	# 2. User should be able to add users from selecting multiple contacts from Employees and Departments contact lists.
+	# 3. User should be able to attach link by clicking on the link icon.
+	# 4. User should be able to insert videos by clicking on the video icon and entering the video URL.
+	# 5. User should be able to create a quote by clicking on the Comma icon.
+	# *6. User should be able to add mention by clicking on the Add mention icon.*
+	# 7. User should be able to send announcement.
+
+  #Scenario: Verify that user should be able to add mention by clicking on the Add mention icon.
+  @NEXTBASE-348
   Scenario Outline: Announcement with different accounts <userType>
     Given the user logged in as "<userType>"
     When the user opens Announcement panel
@@ -85,10 +164,24 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human Resource |
+      | Human_Resources |
       | Marketing      |
 
-  @wip
+  #*{color:#de350b}User Story:{color}*
+	#As a user, I should be able to send annoucement from Annoucement subheadding from "More" under Activity Stream.
+	#
+	#{color:#de350b} *Acceptance Criteria:*{color}
+	#
+	#1. User should be able to click on upload files icon to upload files and pictures from local disks.
+	# 2. User should be able to add users from selecting multiple contacts from Employees and Departments contact lists.
+	# 3. User should be able to attach link by clicking on the link icon.
+	# 4. User should be able to insert videos by clicking on the video icon and entering the video URL.
+	# 5. User should be able to create a quote by clicking on the Comma icon.
+	# 6. User should be able to add mention by clicking on the Add mention icon.
+	# *7. User should be able to send announcement.*
+
+  #Scenario: Verify that user should be able to send announcement.
+  @NEXTBASE-349
   Scenario Outline: Announcement with different accounts <userType>
     Given the user logged in as "<userType>"
     When the user opens Announcement panel
@@ -98,5 +191,5 @@ Feature: Announcement function from "More"
     Examples:
       | userType       |
       | Helpdesk       |
-      | Human Resource |
+      | Human_Resources |
       | Marketing      |
