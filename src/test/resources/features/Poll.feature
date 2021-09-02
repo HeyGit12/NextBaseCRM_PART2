@@ -14,10 +14,10 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
     Then the user should be able to add "<contact_1>","<contact_2>"
 
     Examples:
-      | userType        | contact_1                      | contact_2                    |
-      | Helpdesk        | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
-      | Human_resources | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
-      | Marketing       | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
+      | userType  | contact_1                      | contact_2                    |
+      | Helpdesk  | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
+      | HR        | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
+      | Marketing | marketing84@cybertekschool.com | helpdesk1@cybertekschool.com |
 
   @NEXTBASE-326
   Scenario Outline:Add link to Poll
@@ -28,10 +28,10 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
     Then the user should be able to add "<link>" as a link
 
     Examples:
-      | userType        | link                                                                                               |
-      | Helpdesk        | https://www.amazon.com/Logitech-Headset-H390-Noise-Cancelling/dp/B000UXZQ42/ref=lp_16225007011_1_9 |
-      | Human_resources | https://www.amazon.com/Logitech-Headset-H390-Noise-Cancelling/dp/B000UXZQ42/ref=lp_16225007011_1_9 |
-      | Marketing       | https://www.amazon.com/Logitech-Headset-H390-Noise-Cancelling/dp/B000UXZQ42/ref=lp_16225007011_1_9 |
+      | userType  | link                                                                                               |
+      | Helpdesk  | https://www.amazon.com/Logitech-Headset-H390-Noise-Cancelling/dp/B000UXZQ42/ref=lp_16225007011_1_9 |
+      | HR        | https://www.amazon.com/Logitech-Headset-H390-Noise-Cancelling/dp/B000UXZQ42/ref=lp_16225007011_1_9 |
+      | Marketing | https://www.amazon.com/Logitech-Headset-H390-Noise-Cancelling/dp/B000UXZQ42/ref=lp_16225007011_1_9 |
 
   @NEXTBASE-327
   Scenario Outline:Add mention to Poll
@@ -42,10 +42,10 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
     Then the user should be able to add "<email>" as a mention
 
     Examples:
-      | userType        | email                          |
-      | Helpdesk        | marketing84@cybertekschool.com |
-      | Human_resources | marketing84@cybertekschool.com |
-      | Marketing       | marketing84@cybertekschool.com |
+      | userType  | email                          |
+      | Helpdesk  | marketing84@cybertekschool.com |
+      | HR        | marketing84@cybertekschool.com |
+      | Marketing | marketing84@cybertekschool.com |
 
   @NEXTBASE-328
   Scenario Outline:Add questions and answers to Poll
@@ -55,10 +55,10 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
     Then the user should be able to add questions and answers
 
     Examples:
-      | userType        |
-      | Helpdesk        |
-      | Human_resources |
-      | Marketing       |
+      | userType  |
+      | Helpdesk  |
+      | HR        |
+      | Marketing |
 
   @NEXTBASE-329
   Scenario Outline:Delete questions and answers
@@ -69,10 +69,10 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
     Then the user should be able to delete questions and answers
 
     Examples:
-      | userType        |
-      | Helpdesk        |
-      | Human_resources |
-      | Marketing       |
+      | userType  |
+      | Helpdesk  |
+      | HR        |
+      | Marketing |
 
   @NEXTBASE-330 @NEXTBASE-331
   Scenario Outline:Provide the attendees multiple choice and send poll
@@ -85,7 +85,7 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
     Then the user should be able to provide "<Question>", "<Answer1>" and "<Answer2>"
 
     Examples:
-      | userType        | Question   | Answer1   | Answer2   |
-      | Helpdesk        | exQuestion | exAnswer1 | exAnswer2 |
-      | Human_resources | exQuestion | exAnswer1 | exAnswer2 |
-      | Marketing       | exQuestion | exAnswer1 | exAnswer2 |
+      | userType  | Question   | Answer1   | Answer2   |
+      | Helpdesk  | exQuestion | exAnswer1 | exAnswer2 |
+      | HR        | exQuestion | exAnswer1 | exAnswer2 |
+      | Marketing | exQuestion | exAnswer1 | exAnswer2 |

@@ -1,4 +1,4 @@
-@NEXTBASE-351
+@NEXTBASE-351 @burak
 Feature: Announcement function from "More"
 
   #*{color:#ff0000}User Story:
@@ -23,10 +23,10 @@ Feature: Announcement function from "More"
     Then the user should be able to see file and picture are uploaded
 
     Examples:
-      | userType       |
-      | Helpdesk       |
-      | Human_Resources |
-      | Marketing      |
+      | userType  |
+      | Helpdesk  |
+      | HR        |
+      | Marketing |
 
 #*{color:#de350b}User Story:{color}*
 	#As a user, I should be able to send annoucement from Annoucement subheadding from "More" under Activity Stream.
@@ -50,10 +50,10 @@ Feature: Announcement function from "More"
     Then the user should be able to see users are added
 
     Examples:
-      | userType       |
-      | Helpdesk       |
-      | Human_Resources |
-      | Marketing      |
+      | userType  |
+      | Helpdesk  |
+      | HR        |
+      | Marketing |
 
     #*{color:#de350b}User Story:{color}*
 	#As a user, I should be able to send annoucement from Annoucement subheadding from "More" under Activity Stream.
@@ -77,10 +77,10 @@ Feature: Announcement function from "More"
     Then the user should be able to see the link is attached
 
     Examples:
-      | userType       |
-      | Helpdesk       |
-      | Human_Resources |
-      | Marketing      |
+      | userType  |
+      | Helpdesk  |
+      | HR        |
+      | Marketing |
 
 
 
@@ -107,10 +107,10 @@ Feature: Announcement function from "More"
 
 
     Examples:
-      | userType       |
-      | Helpdesk       |
-      | Human_Resources |
-      | Marketing      |
+      | userType  |
+      | Helpdesk  |
+      | HR        |
+      | Marketing |
 
     #*{color:#de350b}User Story:{color}*
 	#As a user, I should be able to send annoucement from Annoucement subheadding from "More" under Activity Stream.
@@ -134,10 +134,10 @@ Feature: Announcement function from "More"
     Then the user should be able to see the quote is created
 
     Examples:
-      | userType       |
-      | Helpdesk       |
-      | Human_Resources |
-      | Marketing      |
+      | userType  |
+      | Helpdesk  |
+      | HR        |
+      | Marketing |
 
 
     #*{color:#de350b}User Story:{color}*
@@ -162,10 +162,10 @@ Feature: Announcement function from "More"
     Then the user should be able to see the mention is added
 
     Examples:
-      | userType       |
-      | Helpdesk       |
-      | Human_Resources |
-      | Marketing      |
+      | userType  |
+      | Helpdesk  |
+      | HR        |
+      | Marketing |
 
   #*{color:#de350b}User Story:{color}*
 	#As a user, I should be able to send annoucement from Annoucement subheadding from "More" under Activity Stream.
@@ -189,7 +189,7 @@ Feature: Announcement function from "More"
     Then the user should be able to see announcement is posted
 
     Examples:
-      | userType       |
-      | Helpdesk       |
-      | Human_Resources |
-      | Marketing      |
+      | userType  |
+      | Helpdesk  |
+      | HR        |
+      | Marketing |

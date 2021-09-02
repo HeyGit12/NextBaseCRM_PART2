@@ -19,7 +19,7 @@ public class announcementStepDefs {
 
         Driver.get().get(ConfigurationReader.get("url"));
 
-        new LoginPage().loginAsA(userType);
+        new LoginPage().loginAs(userType);
 
     }
 
