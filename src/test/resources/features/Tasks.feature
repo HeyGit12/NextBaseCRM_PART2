@@ -93,7 +93,7 @@ Feature: Tasks page functionality
     And user click CREATE TEST TEMPLATE  button
     Then user must be create new task template
 
-  @wip
+
   Scenario: HR User can delete task
     Given user already logged in with "hr1@cybertekschool.com" username "UserUser" password
     When user click "Tasks" "All" under Activity stream
@@ -102,5 +102,15 @@ Feature: Tasks page functionality
     And user click APPLY
     And user click CONTINUE
     Then user should be able to delete task
+
+  @wip
+    Scenario: HR User can add one more responsible person
+      Given user already logged in with "hr1@cybertekschool.com" username "UserUser" password
+      When user click "Tasks" "All" under Activity stream
+      And hr user click created task
+      And user click EDIT
+      And user click add more button;
+      Then user must add more responsible person
+
 
 

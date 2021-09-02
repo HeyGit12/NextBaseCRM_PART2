@@ -183,6 +183,23 @@ public class TasksPage extends BasePage {
     @FindBy(css = "#pagetitle")
     public WebElement taskTemplateCheck;
 
+    @FindBy(xpath = "//tr[8]/td[1]/span")
+    public WebElement createdHrTaskCB;
+    @FindBy(xpath = "//a[contains(text(),'Hello team')]")
+    public WebElement createdHrTask;
+
+
+    @FindBy(css = "#action_button_TASKS_GRID_ROLE_ID_4096_0_ADVANCED_N_control")
+    public WebElement selectActionButton;
+    @FindBy(xpath = "//span[@data-value='delete']")
+    public WebElement delete;
+
+    @FindBy(css = "#apply_button_control")
+    public WebElement apply;
+
+    @FindBy(xpath = "//span[contains(text(),'Continue')]")
+    public WebElement Continue;
+
 
 
 
