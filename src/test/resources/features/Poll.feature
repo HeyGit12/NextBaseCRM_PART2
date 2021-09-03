@@ -33,7 +33,7 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
       | HR        | https://www.amazon.com/Logitech-Headset-H390-Noise-Cancelling/dp/B000UXZQ42/ref=lp_16225007011_1_9 |
       | Marketing | https://www.amazon.com/Logitech-Headset-H390-Noise-Cancelling/dp/B000UXZQ42/ref=lp_16225007011_1_9 |
 
-  @NEXTBASE-327
+  @NEXTBASE-327 @Test
   Scenario Outline:Add mention to Poll
     When the user logins as a "<userType>"
     And the user navigates to Poll tab
