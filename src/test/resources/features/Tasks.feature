@@ -1,7 +1,7 @@
 @wip
 Feature: Tasks page functionality
 
-
+@NEXTBASE-353 @SMOKE
   Scenario: HR User can create task
     Given user already logged in with "hr1@cybertekschool.com" username "UserUser" password
     When user click "Tasks" "All" under Activity stream

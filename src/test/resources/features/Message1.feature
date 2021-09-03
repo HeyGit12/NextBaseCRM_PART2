@@ -16,7 +16,7 @@ Feature: As a user, I should be able to send messages by clicking on Message tab
 	#*5. User should be able to create a quote by clicking on the Comma icon.*
 	#*6. User should be able to add mention by clicking on the Add mention icon.*
 	#*7. User should be able to send a message.*
-	@NEXTBASE-333
+	@NEXTBASE-333 @SMOKE
 	Scenario Outline: Verify that as a user, I should be able to send messages by clicking on Message tab under Active Stream.
 		Sending message as "<user>"
 		    Given the user is on the homepage with valid "<userName>" and "<password>" as "<user>"

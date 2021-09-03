@@ -24,7 +24,7 @@ Feature: As a user, I should be able to send messages by clicking on Message tab
 		    And the user click on Insert video icon at the bottom of the message typing box
 		    And the user puts in video link from "<vimeo>" in the opening Video source box
 		    Then the user should not see any error message like "<vimeoError>"
-		
+
 		    Examples:
 		      | user | userName                | password | vimeoError                                | vimeo                       |
 		      | HR12 | hr12@cybertekschool.com | UserUser | [FVID403] Access to video file was denied | https://vimeo.com/577635596 |

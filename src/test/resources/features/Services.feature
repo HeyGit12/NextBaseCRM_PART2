@@ -16,7 +16,7 @@ Feature: As a user, I should be able to use "Services" functionality so that use
 	#7. Marketing User can sort the ideas by date added.
 	#8. Marketing User can sort the ideas by rating.
 	#9. HR User can print the lists by clicking "Print" button under Lists page of Services menu.
-	@NEXTBASE-304
+	@NEXTBASE-304 @SMOKE
 	Scenario: Verify that as a user, I should be able to use "Services" functionality so that user can take advantage of company's services.
 		User can be redirected to "New Event" page for booking a meeting room
 		    Given the user logged in as a "helpdesk"
@@ -42,7 +42,7 @@ Feature: As a user, I should be able to use "Services" functionality so that use
 	#7. Marketing User can sort the ideas by date added.
 	#8. Marketing User can sort the ideas by rating.
 	#9. HR User can print the lists by clicking "Print" button under Lists page of Services menu.
-	@NEXTBASE-305
+	@NEXTBASE-305 @SMOKE
 	Scenario: Verify that as a user, I should be able to use "Services" functionality so that user can take advantage of company's services.
 		User can suggest new idea
 		    Given the user logged in as a "marketing"

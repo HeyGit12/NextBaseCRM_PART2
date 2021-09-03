@@ -74,7 +74,7 @@ Feature: As a user, I should be able to create a poll by clicking on Poll tab un
       | HR        |
       | Marketing |
 
-  @NEXTBASE-330 @NEXTBASE-331
+  @NEXTBASE-330 @NEXTBASE-331 @SMOKE
   Scenario Outline:Provide the attendees multiple choice and send poll
     When the user logins as a "<userType>"
     And the user navigates to Poll tab

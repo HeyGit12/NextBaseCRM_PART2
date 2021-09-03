@@ -20,7 +20,7 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
 	# 10. Marketing User can display the invitations by using "Filter and search" box after clicking "Invitations" button.
 	# 11. HR User can filter events and/or tasks by using "Filter and search" box after clicking "I'M AN ORGANISER" button.
 	# 12. Helpdesk User can reset after selecting "Yes" under "Event with participants" menu and "Invited" under "Participant status".
-  @NEXTBASE-310
+  @NEXTBASE-310 @SMOKE
   Scenario: Verify that HR User should be able to add new important event with description by specifying the start-end dates in the specific time zones, adding certain location, adding attendees, color as "Pink" and availability as "Occupied"
     Given  User logins with "HR" credentials
     And user clicks "Calendar" menu
