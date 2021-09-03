@@ -11,7 +11,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 
-public class announcementStepDefs {
+public class AnnouncementStepDefs {
 
 
     @Given("the user logged in as {string}")
