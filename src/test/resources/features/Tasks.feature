@@ -16,7 +16,7 @@ Feature: Tasks page functionality
     And  user click "ADD TASK" button
     Then user should be able to add new task
 
-  @wip
+
   Scenario: Marketing User can edit the task
     Given user already logged in with "marketing1@cybertekschool.com" username "UserUser" password
     When user click "Tasks" "All" under Activity stream
@@ -32,8 +32,9 @@ Feature: Tasks page functionality
   Scenario:Hr user can use edit functionality
     Given user already logged in with "hr1@cybertekschool.com" username "UserUser" password
     When user click "Tasks" "All" under Activity stream
-    And user click created task
+    And hr user click created task
     And user click EDIT
+    And user change responsible person;
     And user click More
     And user add Time tracking
     And user add reminder
@@ -43,18 +44,18 @@ Feature: Tasks page functionality
 
       | Reminder        | alper@cybertekschool.com |
       | Estimate        | 02:30:00                 |
-      | Dependent tasks | things to do             |
+      | Dependent tasks | Test             |
 
 
   Scenario: Marketing User can create a subtask
     Given user already logged in with "marketing1@cybertekschool.com" username "UserUser" password
     When user click plus icon
     And user enter following informations
-      | Action Type  | CreateSubTask   |
+      | Action Type  | Create   |
       | Things to do | Test.m.v.1      |
       | Description  | Subtask created |
-    And user add subtask
     And user click More
+    And user add subtask
     And user add Tags
     And  user click "ADD TASK" button
     Then user should be ableto create subtask
@@ -67,7 +68,7 @@ Feature: Tasks page functionality
     And user click EDIT
     And user enter following informations
       | Action Type  | Add                          |
-      | Things to do | checklist tested             |
+      | Description | checklist tested             |
       | Participants | hr1@cybertekschool.com       |
       | Observers    | helpdesk1@cybertekschool.com |
     And user click "SAVE CHANGES" button
@@ -81,8 +82,8 @@ Feature: Tasks page functionality
     And user click All templates
     And user click ADD
     And user must be on "New task template" page
-    And user click High Priority check box
-    And user Add mention
+    And user click to High Priority check box
+    And user click to Add mention
     And user enter following informations
       | Action Type  | Template |
       | Things to do | Test.h   |
@@ -90,7 +91,7 @@ Feature: Tasks page functionality
       | Deadline in  | 7335     |
     And user click Options
     And user click Responsible person can change deadline check box and Approve task when completed check box
-    And user click "SAVE CHANGES" button
+    And user click CREATE TEST TEMPLATE  button
     Then user must be create new task template
 
 
@@ -102,5 +103,15 @@ Feature: Tasks page functionality
     And user click APPLY
     And user click CONTINUE
     Then user should be able to delete task
+
+
+    Scenario: HR User can add one more responsible person
+      Given user already logged in with "hr1@cybertekschool.com" username "UserUser" password
+      When user click "Tasks" "All" under Activity stream
+      And hr user click created task
+      And user click EDIT
+      And user click add more button;
+      Then user must add more responsible person
+
 
 
