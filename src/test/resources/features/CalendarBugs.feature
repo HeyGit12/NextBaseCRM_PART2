@@ -13,8 +13,7 @@ Feature: As a user, I should be able to navigate "Calendar" page so that user ca
   Scenario: Verify that user should not be able to add event with past event date
     Given  User logins with "HR" credentials
     And user clicks "Calendar" menu
-    When user clicks add
-    And user enters the below event details
+    When user clicks add and enters the below event details
       | Event name              | NextBase-290                                               |
       | Description             | MY_FIRST_DESCRIPTION_OF_BIRTHDAY                           |
       | This event is important | true                                                       |

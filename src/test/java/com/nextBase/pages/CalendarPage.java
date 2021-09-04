@@ -43,8 +43,17 @@ public class CalendarPage extends BasePage {
     @FindBy(css = ".event-grid-dest-wrap")
     public WebElement attendeesField;
 
+    @FindBy(css = ".event-grid-dest-text")
+    public List<WebElement> allAttendees;
+
     @FindBy(xpath = "(//span[@class='feed-event-del-but'])[2]")
     public WebElement removeFirstAttendee;
+
+    @FindBy(css = ".calendar-slider-sidebar-user-info-name")
+    public List<WebElement> invitedParticipants;
+
+    @FindBy(css = ".calendar-member-total-count")
+    public WebElement invitedButton;
 
     @FindBy(css = ".bx-lm-tab-department")
     public WebElement employeesAndDeps;
@@ -84,6 +93,9 @@ public class CalendarPage extends BasePage {
 
     @FindBy(xpath = "//input[@name='private_event']")
     public WebElement privateEvent;
+
+    @FindBy(xpath = "(//div[@class='calendar-slider-detail-option-value'])[1]")
+    public WebElement getAvailability;
 
     @FindBy(css = ".calendar-timeline-stream-content-event")
     public WebElement eventDetails;
@@ -141,14 +153,18 @@ public class CalendarPage extends BasePage {
     public void addAttendees(String list) {
         attendeesField.click();
         employeesAndDeps.click();
-        String[] split = list.split("/");
-        for (String s : split) {
-            Driver.get().findElement(By.xpath("//div[@class='bx-finder-company-department-employee-name' and contains(text(),'" + s + "')]")).click();
+        if (list.contains("/")) {
+            String[] split = list.split("/");
+            for (String s : split) {
+                Driver.get().findElement(By.xpath("//div[@class='bx-finder-company-department-employee-name' and contains(text(),'" + s + "')]")).click();
+            }
+        } else {
+            Driver.get().findElement(By.xpath("//div[@class='bx-finder-company-department-employee-name' and contains(text(),'" + list + "')]")).click();
         }
     }
 
     public void selectColor(String color) {
-        Color color1=Color.fromString(color);
+        Color color1 = Color.fromString(color);
         String colorAsHex = color1.asHex();
         otherColor.click();
         customColor.click();
@@ -169,8 +185,30 @@ public class CalendarPage extends BasePage {
         for (WebElement allEvent : allEvents) {
             set.add(allEvent.getText());
         }
-        System.out.println(set.toString());
         return set.contains(eventName);
+    }
+
+    public void eventHandler(String event, String date) {
+        String[] array = date.split("/");
+        int year = Integer.parseInt(array[2]);
+        int month = Integer.parseInt(array[0]);
+        int day = Integer.parseInt(array[1]);
+        List<WebElement> list = Driver.get().findElements(By.xpath("//div[@data-bx-calendar-list-year='" + year + "']/div[@data-bx-calendar-list-month='" + month + "']/div[@data-bx-calendar-list-day='" + day + "']//span[@class='calendar-timeline-stream-content-event-name-link' and text()='" + event + "']"));
+        if (list.size() > 0) {
+            for (WebElement webElement : list) {
+                webElement.click();
+                delete.click();
+                Driver.get().switchTo().alert().accept();
+            }
+        }
+        List<WebElement> editedEvents = Driver.get().findElements(By.xpath("//div[@data-bx-calendar-list-year='" + year + "']/div[@data-bx-calendar-list-month='" + month + "']/div[@data-bx-calendar-list-day='" + day + "']//span[@class='calendar-timeline-stream-content-event-name-link' and text()='MY_TEST_EVENT']"));
+        if (editedEvents.size() > 0) {
+            for (WebElement editedEvent : editedEvents) {
+                editedEvent.click();
+                delete.click();
+                Driver.get().switchTo().alert().accept();
+            }
+        }
     }
 
 }
