@@ -23,8 +23,8 @@ import java.util.Objects;
 public class CalendarStepDefs {
     String user = null;
     CalendarPage calendarPage = new CalendarPage();
-    String event_name = null;
-    String event_date = null;
+    String event_name = "NextBase-290";
+    String event_date = "09/25/2021";
 
     @Given("User logins with {string} credentials")
     public void user_logins_with_credentials(String userType) {
@@ -75,14 +75,14 @@ public class CalendarStepDefs {
     @Then("user should be able to add event by clicking SAVE button and display event on calendar")
     public void user_should_be_able_to_add_event_by_clicking_SAVE_button_and_display_event_on_calendar() {
         calendarPage.save.click();
-        Assert.assertTrue(calendarPage.checkEvents(event_name));
+        Assert.assertTrue(calendarPage.checkEvents(event_name, event_date));
     }
 
     @When("user clicks event and selects edit")
     public void user_clicks_event_and_selects_edit() {
         // actions.doubleClick(calendarPage.eventDetails).perform();        // ****DOUBLE CLICK****
         calendarPage.schedule.click();
-        calendarPage.eventDetails.click();
+        calendarPage.findEvent(event_name, event_date).click();
         calendarPage.editEvent.click();
         BrowserUtils.waitForClickablility(calendarPage.more, 10);
     }
@@ -92,10 +92,12 @@ public class CalendarStepDefs {
         calendarPage.more.click();
         calendarPage.selectColor(color);
         calendarPage.save.click();
-        BrowserUtils.waitForPageToLoad(2);
-        String style = calendarPage.eventColor.getAttribute("style");
+        Driver.get().navigate().refresh();
+        String style = calendarPage.eventColor(event_name,event_date).getAttribute("style");
+        System.out.println("style = " + style);
         Color a = Color.fromString(color);
         String expected = a.asRgb();
+        System.out.println("expected = " + expected);
         Assert.assertTrue(style.contains(expected));
     }
 
@@ -108,7 +110,7 @@ public class CalendarStepDefs {
         calendarPage.save.click();
         Driver.get().navigate().refresh();
         calendarPage.schedule.click();
-        calendarPage.eventDetails.click();
+        calendarPage.findEvent(event_name, event_date).click();
         calendarPage.openEvent.click();
         String text = calendarPage.specialNotes.getText();
 
@@ -129,7 +131,7 @@ public class CalendarStepDefs {
         calendarPage.save.click();
         Driver.get().navigate().refresh();
         calendarPage.schedule.click();
-        calendarPage.eventDetails.click();
+        calendarPage.findEvent(event_name, event_date).click();
         calendarPage.openEvent.click();
         String text = calendarPage.getAvailability.getText();
         String actual = text.equals("Free") ? "Available" : text.equals("Undecided") ? "Unsure" : text;
@@ -139,6 +141,7 @@ public class CalendarStepDefs {
 
     @Then("user should be able to change his-her event's name as {string}")
     public void user_should_be_able_to_change_his_her_event_s_name_as(String string) {
+        event_name = string;
         calendarPage.eventName.clear();
         calendarPage.eventName.sendKeys(string);
         calendarPage.save.click();
@@ -165,7 +168,7 @@ public class CalendarStepDefs {
         calendarPage.save.click();
         Driver.get().navigate().refresh();
         calendarPage.schedule.click();
-        calendarPage.eventDetails.click();
+        calendarPage.findEvent(event_name, event_date).click();
         calendarPage.invitedButton.click();
         List<WebElement> participants = calendarPage.invitedParticipants;
         List<String> participantList = new ArrayList<>();
@@ -182,7 +185,7 @@ public class CalendarStepDefs {
         calendarPage.save.click();
         Driver.get().navigate().refresh();
         calendarPage.schedule.click();
-        calendarPage.eventDetails.click();
+        calendarPage.findEvent(event_name, event_date).click();
         calendarPage.invitedButton.click();
         List<WebElement> participants = calendarPage.invitedParticipants;
         List<String> participantList = new ArrayList<>();
@@ -195,7 +198,11 @@ public class CalendarStepDefs {
 
     @Then("user should not be able to display HR user's event on his-her calendar")
     public void user_should_not_be_able_to_display_HR_user_s_event_on_his_her_calendar() {
-        Assert.assertFalse(calendarPage.checkEvents(event_name));
+        String[] events = {calendarPage.getFirstEventName(), calendarPage.getEditedEventName()};
+        for (int i = 0; i < 2; i++) {
+            boolean displayed = calendarPage.checkEvents(events[i], event_date);
+            Assert.assertFalse(displayed);
+        }
     }
 
     @When("user clicks Filter and search and clicks Invitations")
@@ -248,7 +255,7 @@ public class CalendarStepDefs {
     @Then("user should not be able to add event when click the SAVE button")
     public void user_should_not_be_able_to_add_event_when_click_the_SAVE_button() {
         calendarPage.save.click();
-        Assert.assertFalse(calendarPage.checkEvents(event_name));
+        Assert.assertFalse(calendarPage.checkEvents(event_name, event_date));
     }
 
 }

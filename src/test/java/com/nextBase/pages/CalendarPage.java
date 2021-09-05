@@ -10,6 +10,18 @@ import java.util.*;
 
 
 public class CalendarPage extends BasePage {
+
+    private String firstEventName="NextBase-290";
+    private String editedEventName="MY_TEST_EVENT";
+
+    public String getFirstEventName() {
+        return firstEventName;
+    }
+
+    public String getEditedEventName() {
+        return editedEventName;
+    }
+
     @FindBy(xpath = "//button[@class='ui-btn-main']")
     public WebElement add;
 
@@ -87,9 +99,6 @@ public class CalendarPage extends BasePage {
 
     @FindBy(xpath = "//span[@class='calendar-right-block-event-info-btn'][1]")
     public WebElement openEvent;
-
-    @FindBy(xpath = "(//span[@class='calendar-timeline-stream-content-event-color'])[1]")
-    public WebElement eventColor;
 
     @FindBy(xpath = "//input[@name='private_event']")
     public WebElement privateEvent;
@@ -180,12 +189,29 @@ public class CalendarPage extends BasePage {
 
     }
 
-    public boolean checkEvents(String eventName) {
-        Set<String> set = new HashSet<>();
-        for (WebElement allEvent : allEvents) {
-            set.add(allEvent.getText());
-        }
-        return set.contains(eventName);
+public WebElement eventColor(String event, String date){
+    WebElement colorLocator;
+    String[] array = date.split("/");
+    int year = Integer.parseInt(array[2]);
+    int month = Integer.parseInt(array[0]);
+    int day = Integer.parseInt(array[1]);
+    try {
+        colorLocator = Driver.get().findElement(By.xpath("(//div[@data-bx-calendar-list-year='" + year + "']/div[@data-bx-calendar-list-month='" + month + "']/div[@data-bx-calendar-list-day='" + day + "']//span[@class='calendar-timeline-stream-content-event-name-link' and text()='" + event + "'])/../span[1]"));
+    }
+    catch (Exception e){
+        colorLocator = Driver.get().findElement(By.xpath("(//div[@data-bx-calendar-list-year='" + year + "']/div[@data-bx-calendar-list-month='" + month + "']/div[@data-bx-calendar-list-day='" + day + "']//span[@class='calendar-timeline-stream-content-event-name-link' and text()='" + editedEventName + "'])/../span[1]"));
+    }
+        return colorLocator;
+}
+
+    public boolean checkEvents(String event, String date) {
+
+        String[] array = date.split("/");
+        int year = Integer.parseInt(array[2]);
+        int month = Integer.parseInt(array[0]);
+        int day = Integer.parseInt(array[1]);
+        List<WebElement> list = Driver.get().findElements(By.xpath("//div[@data-bx-calendar-list-year='" + year + "']/div[@data-bx-calendar-list-month='" + month + "']/div[@data-bx-calendar-list-day='" + day + "']//span[@class='calendar-timeline-stream-content-event-name-link' and text()='" + event + "']"));
+        return list.size()>0;
     }
 
     public void eventHandler(String event, String date) {
@@ -201,7 +227,7 @@ public class CalendarPage extends BasePage {
                 Driver.get().switchTo().alert().accept();
             }
         }
-        List<WebElement> editedEvents = Driver.get().findElements(By.xpath("//div[@data-bx-calendar-list-year='" + year + "']/div[@data-bx-calendar-list-month='" + month + "']/div[@data-bx-calendar-list-day='" + day + "']//span[@class='calendar-timeline-stream-content-event-name-link' and text()='MY_TEST_EVENT']"));
+        List<WebElement> editedEvents = Driver.get().findElements(By.xpath("//div[@data-bx-calendar-list-year='" + year + "']/div[@data-bx-calendar-list-month='" + month + "']/div[@data-bx-calendar-list-day='" + day + "']//span[@class='calendar-timeline-stream-content-event-name-link' and text()='"+editedEventName+"']"));
         if (editedEvents.size() > 0) {
             for (WebElement editedEvent : editedEvents) {
                 editedEvent.click();
@@ -209,6 +235,22 @@ public class CalendarPage extends BasePage {
                 Driver.get().switchTo().alert().accept();
             }
         }
+    }
+
+    public WebElement findEvent(String event, String date) {
+        WebElement eventLocator;
+        String[] array = date.split("/");
+        int year = Integer.parseInt(array[2]);
+        int month = Integer.parseInt(array[0]);
+        int day = Integer.parseInt(array[1]);
+        try {
+            eventLocator = Driver.get().findElement(By.xpath("//div[@data-bx-calendar-list-year='" + year + "']/div[@data-bx-calendar-list-month='" + month + "']/div[@data-bx-calendar-list-day='" + day + "']//span[@class='calendar-timeline-stream-content-event-name-link' and text()='" + event + "']"));
+        }
+        catch (Exception e){
+            eventLocator = Driver.get().findElement(By.xpath("//div[@data-bx-calendar-list-year='" + year + "']/div[@data-bx-calendar-list-month='" + month + "']/div[@data-bx-calendar-list-day='" + day + "']//span[@class='calendar-timeline-stream-content-event-name-link' and text()='" + editedEventName + "']"));
+        }
+
+        return eventLocator;
     }
 
 }
