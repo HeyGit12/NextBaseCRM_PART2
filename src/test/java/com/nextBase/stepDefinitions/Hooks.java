@@ -1,5 +1,7 @@
 package com.nextBase.stepDefinitions;
 
+import com.nextBase.pages.LoginPage;
+import com.nextBase.utilities.ConfigurationReader;
 import com.nextBase.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -15,7 +17,7 @@ public class Hooks {
     public void setUp(){
         Driver.get().manage().window().maximize();
         Driver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+        Driver.get().get(ConfigurationReader.get("url"));
     }
 
     @After
